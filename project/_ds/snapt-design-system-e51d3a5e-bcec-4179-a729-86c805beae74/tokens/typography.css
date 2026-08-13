@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{
+--font-sans:'Inter',-apple-system,'Segoe UI',sans-serif;
+/* Type scale (from lib/theme.ts type + screens) */
+--fs-hero:28px;--fs-auth-title:27px;--fs-headline:21px;--fs-title:19px;--fs-section:15px;--fs-label:13px;--fs-body:13.5px;--fs-input:14px;--fs-caption:12px;--fs-micro:10.5px;--fs-overline:10px;
+--lh-body:19.5px;
+--ls-tight:-0.3px;--ls-section:-0.2px;--ls-overline:0.5px;
+--w-regular:400;/* @kind font */--w-medium:500;/* @kind font */--w-semibold:600;/* @kind font */--w-bold:700;/* @kind font */--w-extrabold:800;/* @kind font */
+}
+body{font-family:var(--font-sans);color:var(--ink);-webkit-font-smoothing:antialiased}
+a{color:var(--yellow-dark)}a:hover{color:var(--gold-body)}

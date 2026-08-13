@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Explore the app — Snapt</title>
+  <meta name="description" content="A look inside the Snapt app: browse vetted creators, book in a few taps, meet safely, and get your edited photos delivered in the app.">
+  <link rel="stylesheet" href="_ds/snapt-design-system-e51d3a5e-bcec-4179-a729-86c805beae74/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/snapt-design-system-e51d3a5e-bcec-4179-a729-86c805beae74/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/snapt-design-system-e51d3a5e-bcec-4179-a729-86c805beae74/tokens/geometry.css">
+  <link rel="stylesheet" href="_ds/snapt-design-system-e51d3a5e-bcec-4179-a729-86c805beae74/tokens/shadows.css">
+  <link rel="stylesheet" href="_ds/snapt-design-system-e51d3a5e-bcec-4179-a729-86c805beae74/styles.css">
+  <script src="_ds/snapt-design-system-e51d3a5e-bcec-4179-a729-86c805beae74/_ds_bundle.js"></script>
+  <script src="image-slot.js"></script>
+  <style>
+    html{scroll-behavior:smooth}
+    body{margin:0;background:#FAFAFA;color:#1A1A1A;font-family:'Inter',-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:#B98600}a:hover{color:#8A6800}
+    @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes riseFan{from{opacity:0;transform:var(--fan,none) translateY(46px)}to{opacity:1;transform:var(--fan,none) translateY(0)}}
+    @keyframes bobPhone{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    @keyframes bob{0%,100%{transform:var(--tilt,none) translateY(0)}50%{transform:var(--tilt,none) translateY(-7px)}}
+    @media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
+  </style>
+</helmet>
+
+<div style="min-width:320px;overflow-x:hidden">
+
+  <header data-screen-label="Header" style="position:sticky;top:12px;z-index:50;padding:0 16px;display:flex;justify-content:center">
+    <div style="display:flex;align-items:center;gap:clamp(14px,2.5vw,26px);background:#FFFFFF;border:1px solid #ECECEC;border-radius:28px;padding:8px 8px 8px 22px;box-shadow:0 8px 24px rgba(26,26,26,0.12);animation:rise 0.5s ease both">
+      <a href="Snapt%20Website.dc.html" aria-label="Snapt home" style="display:flex;align-items:center"><img src="assets/snapt-mark.webp" alt="Snapt" style="height:24px;display:block"></a>
+      <nav aria-label="Sections" style="display:flex;align-items:center;gap:clamp(14px,2.5vw,26px);font-size:14px;font-weight:600">
+        <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ false }}">
+          <a href="Snapt%20Website.dc.html" style="color:#1A1A1A;text-decoration:none;white-space:nowrap" style-hover="opacity:0.7">Home</a>
+          <a href="Snapt%20Website.dc.html#occasions" style="color:#1A1A1A;text-decoration:none;white-space:nowrap" style-hover="opacity:0.7">Occasions</a>
+          <a href="Snapt%20Website.dc.html#creators" style="color:#1A1A1A;text-decoration:none;white-space:nowrap" style-hover="opacity:0.7">For creators</a>
+        </sc-if>
+        <a href="Snapt%20Website.dc.html#download" style="background:#FFB800;color:#1A1A1A;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:999px;box-shadow:0 6px 18px rgba(255,184,0,0.35);white-space:nowrap" style-hover="opacity:0.85">Get the app</a>
+      </nav>
+    </div>
+  </header>
+
+  <section data-screen-label="Explore hero" style="max-width:1140px;margin:0 auto;padding:clamp(40px,6vw,72px) 20px 0;text-align:center">
+    <p style="margin:0;font-size:10px;font-weight:800;letter-spacing:0.5px;color:#8A6800;animation:rise 0.6s ease 0.05s both">EXPLORE THE APP</p>
+    <h1 style="margin:10px auto 0;font-size:clamp(32px,5vw,54px);font-weight:800;letter-spacing:-1.2px;line-height:1.06;max-width:18ch;text-wrap:balance;animation:rise 0.6s ease 0.12s both">Everything happens in one place.</h1>
+    <p style="margin:16px auto 0;font-size:clamp(15px,1.8vw,17px);color:#767676;line-height:1.55;max-width:52ch;text-wrap:pretty;animation:rise 0.6s ease 0.2s both">From the first tap to the finished photos — here's what booking, meeting, and getting your work back looks like inside Snapt.</p>
+  </section>
+
+  <section data-screen-label="Phone fan" style="padding:clamp(36px,5vw,64px) 0 0;overflow:hidden">
+    <div style="display:flex;justify-content:center;align-items:flex-end;gap:0;padding:24px 0 12px">
+      <div style="flex:0 0 auto;width:clamp(120px,17vw,190px);margin-right:-14px;--fan:rotate(-9deg) translateY(26px);transform:rotate(-9deg) translateY(26px);animation:riseFan 0.8s ease 0.5s both;z-index:1">
+        <div style="background:#1A1A1A;border-radius:34px;padding:8px;box-shadow:0 20px 44px rgba(26,26,26,0.22)"><div style="border-radius:26px;overflow:hidden;aspect-ratio:390/844;background:#F1EEE7"><image-slot id="xp-fan-1" shape="rect" placeholder="Onboarding — 390 × 844" alt="Snapt onboarding screen"></image-slot></div></div>
+      </div>
+      <div style="flex:0 0 auto;width:clamp(130px,18vw,200px);margin-right:-14px;--fan:rotate(-4.5deg) translateY(10px);transform:rotate(-4.5deg) translateY(10px);animation:riseFan 0.8s ease 0.38s both;z-index:2">
+        <div style="background:#1A1A1A;border-radius:34px;padding:8px;box-shadow:0 20px 44px rgba(26,26,26,0.22)"><div style="border-radius:26px;overflow:hidden;aspect-ratio:390/844;background:#F1EEE7"><image-slot id="xp-fan-2" shape="rect" placeholder="Browse creators — 390 × 844" alt="Browse creators screen"></image-slot></div></div>
+      </div>
+      <div style="flex:0 0 auto;width:clamp(150px,20vw,224px);--fan:none;animation:riseFan 0.8s ease 0.28s both;z-index:3">
+        <div style="background:#1A1A1A;border-radius:38px;padding:9px;box-shadow:0 28px 56px rgba(26,26,26,0.28)"><div style="border-radius:30px;overflow:hidden;aspect-ratio:390/844;background:#F1EEE7"><image-slot id="xp-fan-3" shape="rect" placeholder="Home — 390 × 844" alt="Snapt home screen"></image-slot></div></div>
+      </div>
+      <div style="flex:0 0 auto;width:clamp(130px,18vw,200px);margin-left:-14px;--fan:rotate(4.5deg) translateY(10px);transform:rotate(4.5deg) translateY(10px);animation:riseFan 0.8s ease 0.44s both;z-index:2">
+        <div style="background:#1A1A1A;border-radius:34px;padding:8px;box-shadow:0 20px 44px rgba(26,26,26,0.22)"><div style="border-radius:26px;overflow:hidden;aspect-ratio:390/844;background:#F1EEE7"><image-slot id="xp-fan-4" shape="rect" placeholder="Booking — 390 × 844" alt="Booking screen"></image-slot></div></div>
+      </div>
+      <div style="flex:0 0 auto;width:clamp(120px,17vw,190px);margin-left:-14px;--fan:rotate(9deg) translateY(26px);transform:rotate(9deg) translateY(26px);animation:riseFan 0.8s ease 0.56s both;z-index:1">
+        <div style="background:#1A1A1A;border-radius:34px;padding:8px;box-shadow:0 20px 44px rgba(26,26,26,0.22)"><div style="border-radius:26px;overflow:hidden;aspect-ratio:390/844;background:#F1EEE7"><image-slot id="xp-fan-5" shape="rect" placeholder="Delivery — 390 × 844" alt="Delivery screen"></image-slot></div></div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:12.5px;color:#9A9A9A;margin:18px 20px 0">Drop your app screenshots onto the phones — 390 × 844 each.</p>
+  </section>
+
+  <section data-screen-label="Feature rows" style="max-width:1040px;margin:0 auto;padding:clamp(56px,8vw,104px) 20px 0;display:flex;flex-direction:column;gap:clamp(64px,9vw,120px)">
+
+    <div data-reveal="1" style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(28px,5vw,72px)">
+      <div style="flex:1 1 260px;min-width:250px;display:flex;justify-content:center;order:1">
+        <div style="position:relative;width:clamp(200px,24vw,250px)"><div style="width:clamp(200px,24vw,250px);background:#1A1A1A;border-radius:38px;padding:9px;box-shadow:0 24px 48px rgba(26,26,26,0.22);animation:bobPhone 6s ease-in-out infinite"><div style="border-radius:30px;overflow:hidden;aspect-ratio:390/844;background:#F1EEE7"><image-slot id="xp-row-browse" shape="rect" placeholder="Creator profiles — 390 × 844" alt="Creator profile with portfolio"></image-slot></div></div><div style="position:absolute;left:max(-70px,-9vw);top:64px;--tilt:rotate(-5deg);transform:rotate(-5deg);background:#fff;border-radius:16px;padding:13px 17px;box-shadow:0 8px 24px rgba(26,26,26,0.18);max-width:230px;animation:bob 5s ease-in-out infinite"><x-import component-from-global-scope="SnaptDesignSystem_e51d3a.VerifiedBadge" hint-size="auto,16px"></x-import><div style="font-size:14px;font-weight:700;margin-top:4px;line-height:1.3">ID checked before their first job</div><div style="font-size:11.5px;color:#767676;margin-top:2px;line-height:1.35">Every creator you can browse</div></div></div>
+      </div>
+      <div style="flex:1 1 340px;min-width:270px;order:2">
+        <p style="margin:0;font-size:10px;font-weight:800;letter-spacing:0.5px;color:#8A6800">BROWSE</p>
+        <h2 style="margin:10px 0 0;font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-0.6px;text-wrap:pretty">Real portfolios, real people</h2>
+        <p style="margin:14px 0 0;font-size:15px;color:#767676;line-height:1.6;max-width:46ch;text-wrap:pretty">Every creator on Snapt shows real work and a verified identity. Browse portfolios by occasion, see who's available in your area, and pick the eye that fits your day.</p>
+      </div>
+    </div>
+
+    <div data-reveal="2" style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(28px,5vw,72px)">
+      <div style="flex:1 1 340px;min-width:270px;order:1">
+        <p style="margin:0;font-size:10px;font-weight:800;letter-spacing:0.5px;color:#8A6800">BOOK</p>
+        <h2 style="margin:10px 0 0;font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-0.6px;text-wrap:pretty">Booked in a few taps</h2>
+        <p style="margin:14px 0 0;font-size:15px;color:#767676;line-height:1.6;max-width:46ch;text-wrap:pretty">Pick your occasion, drop your pin, choose a date and time. Standard pricing shows before you confirm — the price you see is the price you pay. We'll confirm as soon as a creator accepts.</p>
+      </div>
+      <div style="flex:1 1 260px;min-width:250px;display:flex;justify-content:center;order:2">
+        <div style="position:relative;width:clamp(200px,24vw,250px)"><div style="width:clamp(200px,24vw,250px);background:#1A1A1A;border-radius:38px;padding:9px;box-shadow:0 24px 48px rgba(26,26,26,0.22)"><div style="border-radius:30px;overflow:hidden;aspect-ratio:390/844;background:#F1EEE7"><image-slot id="xp-row-book" shape="rect" placeholder="Booking flow — 390 × 844" alt="Occasion and date booking screen"></image-slot></div></div><div style="position:absolute;right:max(-70px,-9vw);bottom:96px;--tilt:rotate(4deg);transform:rotate(4deg);background:#fff;border-radius:16px;padding:13px 17px;box-shadow:0 8px 24px rgba(26,26,26,0.18);max-width:230px;animation:bob 5.4s ease-in-out infinite"><div style="font-size:10px;font-weight:800;letter-spacing:0.5px;color:#8A7530">STANDARD PRICING</div><div style="font-size:14px;font-weight:700;margin-top:4px;line-height:1.3">$60 · 1 hour session</div><div style="font-size:11.5px;color:#767676;margin-top:2px;line-height:1.35">Shown before you confirm</div></div></div>
+      </div>
+    </div>
+
+    <div data-reveal="3" style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(28px,5vw,72px)">
+      <div style="flex:1 1 260px;min-width:250px;display:flex;justify-content:center;order:1">
+        <div style="position:relative;width:clamp(200px,24vw,250px)"><div style="width:clamp(200px,24vw,250px);background:#1A1A1A;border-radius:38px;padding:9px;box-shadow:0 24px 48px rgba(26,26,26,0.22)"><div style="border-radius:30px;overflow:hidden;aspect-ratio:390/844;background:#F1EEE7"><image-slot id="xp-row-session" shape="rect" placeholder="Session + safety code — 390 × 844" alt="Session screen with safety code"></image-slot></div></div><div style="position:absolute;left:max(-70px,-9vw);top:64px;--tilt:rotate(-4deg);transform:rotate(-4deg);background:#fff;border-radius:16px;padding:13px 17px;box-shadow:0 8px 24px rgba(26,26,26,0.18);max-width:230px;animation:bob 5.2s ease-in-out infinite"><div style="font-size:10px;font-weight:800;letter-spacing:0.5px;color:#8A7530">SAFETY CODE</div><div style="font-size:14px;font-weight:700;margin-top:4px;line-height:1.3">One-time code at arrival</div><div style="font-size:11.5px;color:#767676;margin-top:2px;line-height:1.35">Shown in both apps, matched in person</div></div></div>
+      </div>
+      <div style="flex:1 1 340px;min-width:270px;order:2">
+        <p style="margin:0;font-size:10px;font-weight:800;letter-spacing:0.5px;color:#8A6800">ON THE DAY</p>
+        <h2 style="margin:10px 0 0;font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-0.6px;text-wrap:pretty">Meet with confidence</h2>
+        <p style="margin:14px 0 0;font-size:15px;color:#767676;line-height:1.6;max-width:46ch;text-wrap:pretty">When your creator arrives, you exchange a one-time safety code shown in both apps — so you always know you've met the verified person you booked. Then you get on with your day; they've got the camera.</p>
+      </div>
+    </div>
+
+    <div data-reveal="4" style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(28px,5vw,72px)">
+      <div style="flex:1 1 340px;min-width:270px;order:1">
+        <p style="margin:0;font-size:10px;font-weight:800;letter-spacing:0.5px;color:#8A6800">REMOTE EDITS</p>
+        <h2 style="margin:10px 0 0;font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-0.6px;text-wrap:pretty">Already have the footage? Send it in.</h2>
+        <p style="margin:14px 0 0;font-size:15px;color:#767676;line-height:1.6;max-width:46ch;text-wrap:pretty">Upload photos or video straight from your camera roll and a real editor takes it from there — colour, cuts, and polish, from $25. No session needed, and no location limit across Saint Lucia.</p>
+      </div>
+      <div style="flex:1 1 260px;min-width:250px;display:flex;justify-content:center;order:2">
+        <div style="position:relative;width:clamp(200px,24vw,250px)"><div style="width:clamp(200px,24vw,250px);background:#1A1A1A;border-radius:38px;padding:9px;box-shadow:0 24px 48px rgba(26,26,26,0.22)"><div style="border-radius:30px;overflow:hidden;aspect-ratio:390/844;background:#F1EEE7"><image-slot id="xp-row-upload" shape="rect" placeholder="Upload flow — 390 × 844" alt="Footage upload screen"></image-slot></div></div><div style="position:absolute;right:max(-70px,-9vw);bottom:96px;--tilt:rotate(5deg);transform:rotate(5deg);background:#fff;border-radius:16px;padding:13px 17px;box-shadow:0 8px 24px rgba(26,26,26,0.18);max-width:230px;animation:bob 5.6s ease-in-out infinite"><x-import component-from-global-scope="SnaptDesignSystem_e51d3a.StatusTag" tone="ready" label="UPLOADING" hint-size="auto,24px"></x-import><div style="font-size:14px;font-weight:700;margin-top:4px;line-height:1.3">Straight from your camera roll</div><div style="font-size:11.5px;color:#767676;margin-top:2px;line-height:1.35">Remote edit · from $25</div></div></div>
+      </div>
+    </div>
+
+    <div data-reveal="5" style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(28px,5vw,72px)">
+      <div style="flex:1 1 260px;min-width:250px;display:flex;justify-content:center;order:1">
+        <div style="position:relative;width:clamp(200px,24vw,250px)"><div style="width:clamp(200px,24vw,250px);background:#1A1A1A;border-radius:38px;padding:9px;box-shadow:0 24px 48px rgba(26,26,26,0.22)"><div style="border-radius:30px;overflow:hidden;aspect-ratio:390/844;background:#F1EEE7"><image-slot id="xp-row-delivery" shape="rect" placeholder="Delivery screen — 390 × 844" alt="Delivered photos screen"></image-slot></div></div><div style="position:absolute;left:max(-70px,-9vw);top:64px;--tilt:rotate(-5deg);transform:rotate(-5deg);background:#fff;border-radius:16px;padding:13px 17px;box-shadow:0 8px 24px rgba(26,26,26,0.18);max-width:230px;animation:bob 5.1s ease-in-out infinite"><x-import component-from-global-scope="SnaptDesignSystem_e51d3a.StatusTag" tone="live" label="ON TIME" hint-size="auto,24px"></x-import><div style="font-size:14px;font-weight:700;margin-top:4px;line-height:1.3">Every job has a delivery deadline</div><div style="font-size:11.5px;color:#767676;margin-top:2px;line-height:1.35">24 hours standard · 6 hours on rush</div></div></div>
+      </div>
+      <div style="flex:1 1 340px;min-width:270px;order:2">
+        <p style="margin:0;font-size:10px;font-weight:800;letter-spacing:0.5px;color:#8A6800">DELIVERY</p>
+        <h2 style="margin:10px 0 0;font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-0.6px;text-wrap:pretty">Delivered where you booked it</h2>
+        <p style="margin:14px 0 0;font-size:15px;color:#767676;line-height:1.6;max-width:46ch;text-wrap:pretty">Your finished photos and video land right in the app — within 24 hours as standard, 6 hours on rush. Download in full quality, share anywhere, keep them forever.</p>
+      </div>
+    </div>
+
+    <div data-reveal="6" style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(28px,5vw,72px)">
+      <div style="flex:1 1 340px;min-width:270px;order:1">
+        <p style="margin:0;font-size:10px;font-weight:800;letter-spacing:0.5px;color:#8A6800">CREATOR MODE</p>
+        <h2 style="margin:10px 0 0;font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-0.6px;text-wrap:pretty">One app, both sides of the lens</h2>
+        <p style="margin:14px 0 0;font-size:15px;color:#767676;line-height:1.6;max-width:46ch;text-wrap:pretty">Creators switch into their own dashboard — see booked jobs, track earnings, and cash out. Keep 68% of every booking, with payouts available 7 days after delivery.</p>
+        <a href="Snapt%20Website.dc.html#creators" style="display:inline-block;margin-top:16px;font-size:14px;font-weight:700;color:#B98600;text-decoration:none">Become a creator →</a>
+      </div>
+      <div style="flex:1 1 260px;min-width:250px;display:flex;justify-content:center;order:2">
+        <div style="position:relative;width:clamp(200px,24vw,250px)"><div style="width:clamp(200px,24vw,250px);background:#1A1A1A;border-radius:38px;padding:9px;box-shadow:0 24px 48px rgba(26,26,26,0.22)"><div style="border-radius:30px;overflow:hidden;aspect-ratio:390/844;background:#F1EEE7"><image-slot id="xp-row-creator" shape="rect" placeholder="Creator dashboard — 390 × 844" alt="Creator earnings dashboard"></image-slot></div></div><div style="position:absolute;right:max(-70px,-9vw);bottom:96px;--tilt:rotate(4deg);transform:rotate(4deg);background:#fff;border-radius:16px;padding:13px 17px;box-shadow:0 8px 24px rgba(26,26,26,0.18);max-width:230px;animation:bob 5.5s ease-in-out infinite"><div style="font-size:10px;font-weight:800;letter-spacing:0.5px;color:#8A7530">CREATOR MODE</div><div style="font-size:14px;font-weight:700;margin-top:4px;line-height:1.3">Switch between client and creator</div><div style="font-size:11.5px;color:#767676;margin-top:2px;line-height:1.35">Same login, same app</div></div></div>
+      </div>
+    </div>
+
+  </section>
+
+  <section data-screen-label="Explore CTA" style="max-width:1140px;margin:0 auto;padding:clamp(64px,9vw,120px) 20px clamp(48px,7vw,88px)">
+    <div data-reveal="7" style="background:#FFB800;border-radius:24px;padding:clamp(32px,5vw,56px);text-align:center">
+      <h2 style="margin:0 auto;font-size:clamp(26px,3.6vw,40px);font-weight:800;letter-spacing:-0.8px;max-width:22ch;text-wrap:balance">Seen enough? Your first booking takes about two minutes.</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;justify-content:center">
+        <a href="Snapt%20Website.dc.html#download" style="background:#1A1A1A;color:#fff;text-decoration:none;font-size:15px;font-weight:700;padding:15px 26px;border-radius:16px" style-hover="opacity:0.85">Get the app</a>
+        <a href="Snapt%20Website.dc.html#occasions" style="background:rgba(255,255,255,0.6);color:#1A1A1A;text-decoration:none;font-size:15px;font-weight:700;padding:15px 26px;border-radius:16px" style-hover="opacity:0.85">See occasions</a>
+      </div>
+      <p style="margin:16px 0 0;font-size:13px;color:#1A1A1A;opacity:0.75;font-weight:500">Free to download · Currently serving northern Saint Lucia</p>
+    </div>
+  </section>
+
+  <footer data-screen-label="Footer" style="border-top:1px solid #ECECEC;background:#fff">
+    <div style="max-width:1140px;margin:0 auto;padding:32px 20px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:14px">
+        <a href="Snapt%20Website.dc.html"><img src="assets/snapt-mark.webp" alt="Snapt" style="height:22px;display:block"></a>
+        <span style="font-size:12.5px;color:#767676">© 2026 Snapt · Made in Saint Lucia</span>
+      </div>
+      <nav aria-label="Footer" style="display:flex;flex-wrap:wrap;gap:20px;font-size:13.5px;font-weight:600">
+        <a href="Snapt%20Website.dc.html" style="color:#1A1A1A;text-decoration:none" style-hover="opacity:0.7">Home</a>
+        <a href="Snapt%20Website.dc.html#faq" style="color:#1A1A1A;text-decoration:none" style-hover="opacity:0.7">FAQ</a>
+        <a href="mailto:hello@snaptcarib.app" style="color:#1A1A1A;text-decoration:none" style-hover="opacity:0.7">hello@snaptcarib.app</a>
+      </nav>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { isDesktop: true };
+  componentDidMount() {
+    this.mq = window.matchMedia('(min-width: 880px)');
+    this.onMq = () => this.setState({ isDesktop: this.mq.matches });
+    this.mq.addEventListener('change', this.onMq);
+    this.onMq();
+    // Scroll reveal: hide rows via JS (visible without JS), reveal on intersect
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    const els = Array.from(document.querySelectorAll('[data-reveal]'));
+    els.forEach((el) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(34px)';
+      el.style.transition = 'opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1)';
+    });
+    const show = (el) => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; };
+    this.io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) { show(en.target); this.io.unobserve(en.target); } });
+    }, { threshold: 0.18, rootMargin: '0px 0px -40px 0px' });
+    els.forEach((el) => this.io.observe(el));
+  }
+  componentWillUnmount() {
+    if (this.mq) this.mq.removeEventListener('change', this.onMq);
+    if (this.io) this.io.disconnect();
+  }
+  renderVals() {
+    return { isDesktop: this.state.isDesktop };
+  }
+}
+</script>
+</body>
+</html>
