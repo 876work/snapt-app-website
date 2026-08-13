@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import HoneypotField from '@/components/site/HoneypotField';
 import { CONTACT_EMAIL, INSTAGRAM_URL } from '@/lib/links';
 import { NETLIFY_FORM_NAMES, submitNetlifyForm } from '@/lib/netlifyForms';
 import sections from './sections.module.css';
@@ -75,9 +76,11 @@ export default function Contact() {
               name={NETLIFY_FORM_NAMES.contact}
               method="POST"
               data-netlify="true"
+              data-netlify-honeypot="bot-field"
               onSubmit={onSubmit}
             >
               <input type="hidden" name="form-name" value={NETLIFY_FORM_NAMES.contact} />
+              <HoneypotField />
               <p className={styles.formTitle}>
                 <span className={styles.dot} aria-hidden="true" />
                 <span className={styles.dotPulse} aria-hidden="true" />

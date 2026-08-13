@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import HoneypotField from '@/components/site/HoneypotField';
 import StoreBadges from '@/components/site/StoreBadges';
 import { NETLIFY_FORM_NAMES, submitNetlifyForm } from '@/lib/netlifyForms';
 import sections from './sections.module.css';
@@ -73,9 +74,11 @@ export default function Download() {
                 name={NETLIFY_FORM_NAMES.appLink}
                 method="POST"
                 data-netlify="true"
+                data-netlify-honeypot="bot-field"
                 onSubmit={onSubmit}
               >
                 <input type="hidden" name="form-name" value={NETLIFY_FORM_NAMES.appLink} />
+                <HoneypotField />
                 <input
                   type="email"
                   required

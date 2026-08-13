@@ -51,8 +51,13 @@ All three forms submit to [Netlify Forms](https://docs.netlify.com/manage/forms/
 | Form name | Component | Fields |
 | --- | --- | --- |
 | `contact` | `components/home/Contact.tsx` | `firstName`, `lastName`, `email`, `message` |
-| `newsletter` | `components/site/NewsletterForm.tsx` | `newsletter` |
+| `newsletter` | `components/site/NewsletterForm.tsx` | `email` |
 | `app-link` | `components/home/Download.tsx` | `email` |
+
+Each form also carries a `bot-field` honeypot (`components/site/HoneypotField.tsx`)
+— hidden from real users, so a submission that fills it in is a bot and Netlify
+discards it. Fields named `email` are what Netlify uses as the reply-to address
+on notifications.
 
 Netlify's build bot registers forms by parsing static HTML in the deploy, and the
 Next.js runtime does not emit parseable HTML for app routes. So the forms are
@@ -74,14 +79,10 @@ Forms use native `required` validation, so an empty submit is blocked rather
 than falling through to the success state. A failed POST shows an error rather
 than a false confirmation, and submit buttons disable while in flight.
 
-Two things deliberately *not* added, both one-liners if you want them:
-
-- **Honeypot spam field** (`data-netlify-honeypot="bot-field"` plus a hidden
-  `bot-field` input). Invisible to users; worth adding before the link spreads.
-- **Renaming the newsletter field** from `newsletter` to `email`. Netlify treats
-  a field literally named `email` as the reply-to address on notifications, so
-  the newsletter form currently won't get that. Left as-is to avoid changing
-  markup that wasn't part of the request.
+Netlify's built-in Akismet spam filtering runs on top of the honeypot. If spam
+still gets through, the next step is reCAPTCHA (`data-netlify-recaptcha="true"`
+plus a `<div data-netlify-recaptcha="true">` in the form), which does add a
+visible widget.
 
 ## Images
 

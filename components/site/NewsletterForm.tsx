@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { NETLIFY_FORM_NAMES, submitNetlifyForm } from '@/lib/netlifyForms';
+import HoneypotField from './HoneypotField';
 import styles from './NewsletterForm.module.css';
 
 /**
@@ -47,16 +48,19 @@ export default function NewsletterForm() {
         name={NETLIFY_FORM_NAMES.newsletter}
         method="POST"
         data-netlify="true"
+        data-netlify-honeypot="bot-field"
         onSubmit={onSubmit}
       >
         <input type="hidden" name="form-name" value={NETLIFY_FORM_NAMES.newsletter} />
+        <HoneypotField />
         <svg className={styles.icon} viewBox="0 0 24 24" aria-hidden="true">
           <path d="M20.79 11.34l-3.34-6.68A3 3 0 0 0 14.76 3H9.24a3 3 0 0 0-2.69 1.66l-3.34 6.68a2 2 0 0 0-.21.9V18a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-5.76a2 2 0 0 0-.21-.9zM8.34 5.55a1 1 0 0 1 .9-.55h5.52a1 1 0 0 1 .9.55L18.38 11H16a1 1 0 0 0-1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2a1 1 0 0 0-1-1H5.62z" />
         </svg>
         <input
           className={styles.input}
           type="email"
-          name="newsletter"
+          /* Named `email` so Netlify uses it as the reply-to on notifications. */
+          name="email"
           required
           placeholder="you@email.com"
           aria-label="Email address for newsletter"

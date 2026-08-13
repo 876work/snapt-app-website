@@ -20,11 +20,15 @@
 
       The app posts to this path as urlencoded data with a `form-name` field
       identifying which form it is. See lib/netlifyForms.ts.
+
+      `bot-field` is a honeypot: it is hidden from real users, so anything that
+      arrives with it filled in is a bot and Netlify discards the submission.
     -->
 
     <!-- components/home/Contact.tsx -->
-    <form name="contact" data-netlify="true" hidden>
+    <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
       <input type="hidden" name="form-name" value="contact" />
+      <input name="bot-field" />
       <input type="text" name="firstName" />
       <input type="text" name="lastName" />
       <input type="email" name="email" />
@@ -32,14 +36,16 @@
     </form>
 
     <!-- components/site/NewsletterForm.tsx -->
-    <form name="newsletter" data-netlify="true" hidden>
+    <form name="newsletter" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
       <input type="hidden" name="form-name" value="newsletter" />
-      <input type="email" name="newsletter" />
+      <input name="bot-field" />
+      <input type="email" name="email" />
     </form>
 
     <!-- components/home/Download.tsx -->
-    <form name="app-link" data-netlify="true" hidden>
+    <form name="app-link" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
       <input type="hidden" name="form-name" value="app-link" />
+      <input name="bot-field" />
       <input type="email" name="email" />
     </form>
   </body>
