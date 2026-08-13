@@ -14,17 +14,10 @@ import Download from '@/components/home/Download';
 import StickyCta from '@/components/home/StickyCta';
 import styles from './page.module.css';
 
-const NAV_LINKS = [
-  { href: '#occasions', label: 'Occasions' },
-  { href: '#how', label: 'How it works' },
-  { href: '#creators', label: 'For creators' },
-  { href: '/explore', label: 'Explore the app' },
-];
-
 export default function HomePage() {
   return (
     <div className={styles.page}>
-      <Header homeHref="#top" links={NAV_LINKS} ctaHref="#download" />
+      <Header currentPath="/" homeHref="#top" ctaHref="#download" />
       <Hero />
       <Stats />
       <Occasions />

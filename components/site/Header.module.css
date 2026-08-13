@@ -49,6 +49,22 @@
   opacity: 0.7;
 }
 
+/* Marks the page you're on, so no destination has to leave the menu. */
+.linkCurrent {
+  position: relative;
+}
+
+.linkCurrent::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--yellow);
+}
+
 /* The prototype gated these on matchMedia('(min-width: 880px)'); a media query
    is equivalent and needs no JS. Every link here is repeated in the footer. */
 .desktopOnly {

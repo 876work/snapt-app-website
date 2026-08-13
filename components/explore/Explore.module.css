@@ -72,7 +72,8 @@
 .phoneScreen {
   border-radius: 26px;
   overflow: hidden;
-  aspect-ratio: 390 / 844;
+  /* iPhone 17 Pro Max — 440 × 956 pt (1320 × 2868 px @3x). */
+  aspect-ratio: 440 / 956;
   background: var(--warm-fill);
 }
 
@@ -189,7 +190,8 @@
 .rowPhoneScreen {
   border-radius: 30px;
   overflow: hidden;
-  aspect-ratio: 390 / 844;
+  /* iPhone 17 Pro Max — 440 × 956 pt (1320 × 2868 px @3x). */
+  aspect-ratio: 440 / 956;
   background: var(--warm-fill);
 }
 
@@ -254,16 +256,16 @@
   background: var(--yellow);
   border-radius: var(--r-sheet);
   padding: clamp(32px, 5vw, 56px);
-  text-align: center;
 }
 
+/* Spans the panel rather than sitting in a narrow centred column, matching the
+   yellow download panel on the homepage. */
 .ctaTitle {
-  margin: 0 auto;
+  margin: 0;
   font-size: clamp(26px, 3.6vw, 40px);
   font-weight: var(--w-extrabold);
   letter-spacing: -0.8px;
-  max-width: 22ch;
-  text-wrap: balance;
+  text-wrap: pretty;
 }
 
 .ctaButtons {
@@ -271,7 +273,6 @@
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 26px;
-  justify-content: center;
 }
 
 .ctaPrimary {

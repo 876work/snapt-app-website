@@ -136,7 +136,8 @@
 .screen {
   border-radius: 32px;
   overflow: hidden;
-  aspect-ratio: 390 / 780;
+  /* iPhone 17 Pro Max — 440 × 956 pt (1320 × 2868 px @3x). */
+  aspect-ratio: 440 / 956;
   background: var(--warm-fill);
 }
 

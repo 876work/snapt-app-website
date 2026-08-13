@@ -1,19 +1,18 @@
 import Link from 'next/link';
+import { navLinks } from '@/lib/nav';
 import styles from './Header.module.css';
 
-export interface HeaderLink {
-  href: string;
-  label: string;
-}
-
-/** Floating nav pill. Section links collapse away below 880px, leaving logo + CTA. */
+/**
+ * Floating nav pill. Every page shows the same links; the current page gets a
+ * yellow underline. Section links collapse away below 880px, leaving logo + CTA.
+ */
 export default function Header({
+  currentPath,
   homeHref = '/',
-  links,
   ctaHref,
 }: {
+  currentPath: string;
   homeHref?: string;
-  links: HeaderLink[];
   ctaHref: string;
 }) {
   return (
@@ -25,11 +24,19 @@ export default function Header({
         </Link>
         <nav aria-label="Sections" className={styles.nav}>
           <span className={styles.desktopOnly}>
-            {links.map((link) => (
-              <Link key={link.href + link.label} href={link.href} className={styles.link}>
-                {link.label}
-              </Link>
-            ))}
+            {navLinks(currentPath).map((link) => {
+              const isCurrent = link.page === currentPath;
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className={isCurrent ? `${styles.link} ${styles.linkCurrent}` : styles.link}
+                  aria-current={isCurrent ? 'page' : undefined}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </span>
           <Link href={ctaHref} className={styles.cta}>
             Get the app

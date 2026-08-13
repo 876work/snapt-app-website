@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/site/Header';
-import FooterSlim from '@/components/site/FooterSlim';
+import Footer from '@/components/site/Footer';
 import PhoneFan from '@/components/explore/PhoneFan';
 import FeatureRows from '@/components/explore/FeatureRows';
 import styles from '@/components/explore/Explore.module.css';
@@ -12,16 +12,10 @@ export const metadata: Metadata = {
     'A look inside the Snapt app: browse vetted creators, book in a few taps, meet safely, and get your edited photos delivered in the app.',
 };
 
-const NAV_LINKS = [
-  { href: '/', label: 'Home' },
-  { href: '/#occasions', label: 'Occasions' },
-  { href: '/#creators', label: 'For creators' },
-];
-
 export default function ExplorePage() {
   return (
     <div className={styles.page}>
-      <Header homeHref="/" links={NAV_LINKS} ctaHref="/#download" />
+      <Header currentPath="/explore" homeHref="/" ctaHref="/#download" />
 
       <section className={styles.hero}>
         <p className={styles.overline}>EXPLORE THE APP</p>
@@ -54,7 +48,7 @@ export default function ExplorePage() {
         </div>
       </section>
 
-      <FooterSlim />
+      <Footer />
     </div>
   );
 }

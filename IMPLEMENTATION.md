@@ -95,6 +95,34 @@ base64 webp. They are extracted to `public/assets/`:
 - `screens/fan-1…5.webp` — Explore phone fan
 - `screens/row-{browse,book,session,upload,delivery,creator}.webp` — Explore rows
 
+### ⚠️ The app screenshots are low-resolution
+
+They came out of the design tool as compressed thumbnails — 161–236px wide,
+where the phone frames need roughly 700px to look sharp on a Retina screen.
+Every one is about **3× short**, which is why they look blurry:
+
+| file | current | needs (3×) |
+| --- | --- | --- |
+| `app-screenshot` | 236 × 512 | 768 wide |
+| `fan-1`, `fan-5` | 161 × 348 | 522 wide |
+| `fan-2`, `fan-4` | 170 × 368 | 552 wide |
+| `fan-3` | 190 × 412 | 618 wide |
+| `row-*` (six) | ~231 × 500 | 696 wide |
+
+**The fix is to replace the files, not to change any code.** Take screenshots on
+an iPhone 17 Pro Max (or the matching simulator) — a native screenshot is
+**1320 × 2868 px**, comfortably more than any slot needs — and save them over
+the existing paths, keeping the filenames. The frames are `object-fit: cover` at
+the device's 440 : 956 ratio, so a native screenshot drops straight in with no
+cropping.
+
+PNG or WebP both work; WebP at quality ~85 keeps them small. Nothing scales
+these up, so any source at or above the "needs" column will be sharp.
+
+If you later want the browser to download smaller variants on small screens
+rather than the full-size file, that means switching these to `next/image` —
+a contained change, worth doing once the real screenshots are in.
+
 Still stand-ins: the "Shot on Snapt" portfolio gallery uses uploaded stock photos
 (`components/home/Portfolio.tsx`, `PORTFOLIO_ITEMS`) — swap for real creator work
 at 900 × 1200 (3:4).
@@ -127,6 +155,18 @@ Everything else is a faithful recreation. These five are not:
 
 5. **Sticky mobile CTA clearance.** Added 74px bottom padding below 880px so the
    fixed CTA bar no longer covers the last line of the footer.
+
+6. **Phone frames use the iPhone 17 Pro Max ratio** (440 : 956) rather than the
+   prototype's 390 : 780 and 390 : 844.
+
+7. **Both pages share one header nav and one footer.** The prototype gave each
+   page its own link set — the Explore page dropped "Explore the app" from the
+   nav while you were on it, and used a condensed footer. The nav is now shared
+   (`lib/nav.ts`) with the current page marked by a yellow underline, and the
+   Explore page uses the same full footer as the homepage.
+
+8. **The Explore CTA panel is left-aligned**, so its heading spans the panel
+   instead of sitting in a 22ch centred column.
 
 ## Copy left as-is (worth a second look)
 
