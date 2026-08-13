@@ -1,0 +1,8 @@
+:root{
+/* Radii (lib/theme.ts radii + observed) */
+--r-sm:12px;--r-chip:13px;--r-input:14px;--r-card:16px;--r-card-lg:18px;--r-book-card:20px;--r-sheet:24px;--r-nav-pill:28px;--r-hero:34px;--r-pill:999px;
+/* Spacing */
+--space-screen-x:22px;--space-content-x:20px;--space-card-pad:16px;--space-gap:12px;--space-gap-sm:8px;
+/* Control heights */
+--h-button:54px;--h-input:52px;--h-cta-sm:46px;--h-chip:38px;--h-seg:40px;--h-slide:58px;--h-nav-pill:56px;
+}

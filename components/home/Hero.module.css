@@ -1,0 +1,215 @@
+.hero {
+  position: relative;
+  background: var(--yellow);
+  border-radius: 0 0 var(--r-hero) var(--r-hero);
+  /* Pulls up under the floating header, which is why the padding below is
+     offset by the header's height. */
+  margin-top: -72px;
+  overflow: hidden;
+}
+
+.rays {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(62%, 760px);
+  height: min(78%, 620px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: calc(clamp(40px, 7vw, 84px) + 84px) 20px clamp(36px, 5vw, 64px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+}
+
+.copy {
+  flex: 1 1 420px;
+  min-width: 290px;
+  animation: rise 0.7s ease 0.1s both;
+}
+
+.lede {
+  margin: 18px 0 0;
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.5;
+  color: var(--ink);
+  max-width: 46ch;
+  text-wrap: pretty;
+}
+
+.actions {
+  margin-top: 26px;
+}
+
+.qr {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: var(--r-card);
+  padding: 10px 16px 10px 10px;
+}
+
+/* App Store badges do nothing on a laptop, so desktop gets a QR code instead.
+   Matches the prototype's 880px matchMedia gate. */
+@media (min-width: 880px) {
+  .qr {
+    display: flex;
+  }
+}
+
+.qrCode {
+  width: 74px;
+  height: 74px;
+  border-radius: 10px;
+  background: var(--card);
+  border: 1.5px dashed var(--yellow-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10.5px;
+  font-weight: var(--w-bold);
+  color: var(--gold-body);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.qrText {
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--ink);
+  font-weight: var(--w-semibold);
+  max-width: 14ch;
+}
+
+.fineprint {
+  margin: 18px 0 0;
+  font-size: 13px;
+  color: var(--ink);
+  opacity: 0.75;
+  font-weight: var(--w-medium);
+}
+
+.phoneCol {
+  flex: 0 1 340px;
+  min-width: 270px;
+  margin: 0 auto;
+  animation: rise 0.8s ease 0.25s both;
+}
+
+.phoneWrap {
+  width: min(280px, 68vw);
+  margin: 0 auto;
+  position: relative;
+}
+
+.sparkTop {
+  position: absolute;
+  top: -22px;
+  right: -30px;
+  animation: twinkle 3.2s ease-in-out infinite;
+}
+
+.sparkBottom {
+  position: absolute;
+  bottom: 64px;
+  left: -44px;
+  animation: twinkle 4s ease-in-out 1.2s infinite;
+}
+
+.phone {
+  background: var(--ink);
+  border-radius: 42px;
+  padding: 12px;
+  box-shadow: 0 36px 72px rgba(26, 26, 26, 0.35);
+  animation: bobPhone 6s ease-in-out infinite;
+}
+
+.screen {
+  border-radius: 32px;
+  overflow: hidden;
+  aspect-ratio: 390 / 780;
+  background: var(--warm-fill);
+}
+
+.screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.popCard {
+  position: absolute;
+  background: var(--card);
+  border-radius: var(--r-card);
+  padding: 14px 18px;
+  box-shadow: 0 8px 24px rgba(26, 26, 26, 0.18);
+}
+
+.popCardVerified {
+  top: 44px;
+  left: max(-108px, -15vw);
+  --tilt: rotate(-5deg);
+  animation:
+    riseCard 0.7s ease 0.55s both,
+    bob 5s ease-in-out 1.3s infinite;
+}
+
+.popCardDelivered {
+  bottom: 82px;
+  right: -34px;
+  --tilt: rotate(4deg);
+  animation:
+    riseCard 0.7s ease 0.75s both,
+    bob 5.6s ease-in-out 1.6s infinite;
+}
+
+.overline {
+  font-size: var(--fs-overline);
+  font-weight: var(--w-extrabold);
+  letter-spacing: var(--ls-overline);
+  color: var(--gold-text);
+}
+
+.popTitle {
+  font-size: 14.5px;
+  font-weight: var(--w-bold);
+  margin-top: 4px;
+  white-space: nowrap;
+}
+
+.popMeta {
+  font-size: var(--fs-caption);
+  color: var(--grey);
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+.statusRow {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.statusDot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--r-pill);
+  background: var(--success-dot);
+}
+
+.statusLabel {
+  font-size: var(--fs-overline);
+  font-weight: var(--w-extrabold);
+  letter-spacing: var(--ls-overline);
+  color: var(--tone-live-fg);
+}

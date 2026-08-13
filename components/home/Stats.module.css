@@ -1,0 +1,25 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+}
+
+.stat {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card-lg);
+  padding: 22px 20px;
+}
+
+.value {
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: var(--w-extrabold);
+  letter-spacing: -0.8px;
+}
+
+.label {
+  margin-top: 4px;
+  font-size: var(--fs-body);
+  color: var(--grey);
+  line-height: 1.45;
+}

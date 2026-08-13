@@ -1,0 +1,178 @@
+/* Design-system tokens — copied verbatim from
+   project/_ds/snapt-design-system-e51d3a5e-bcec-4179-a729-86c805beae74/
+   Do not hand-edit; re-copy from the bundle if the design system changes. */
+@import url('./tokens/colors.css');
+@import url('./tokens/typography.css');
+@import url('./tokens/geometry.css');
+@import url('./tokens/shadows.css');
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--off-white);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--yellow-dark);
+}
+
+a:hover {
+  color: var(--gold-body);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Keyboard focus is never removed — the prototype relies on the browser default
+   ring for the FAQ buttons, gallery panels, and every form control. */
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* Shared entrance / idle motion.
+   `--tilt` lets a bobbing element keep its resting rotation. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes riseLg {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes riseCard {
+  from {
+    opacity: 0;
+    transform: var(--tilt, none) translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: var(--tilt, none) translateY(0);
+  }
+}
+
+@keyframes riseFan {
+  from {
+    opacity: 0;
+    transform: var(--fan, none) translateY(46px);
+  }
+  to {
+    opacity: 1;
+    transform: var(--fan, none) translateY(0);
+  }
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: var(--tilt, none) translateY(0);
+  }
+  50% {
+    transform: var(--tilt, none) translateY(-7px);
+  }
+}
+
+@keyframes bobPhone {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes bobPhoneSm {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.9;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.78) rotate(-10deg);
+  }
+}
+
+@keyframes pulseDot {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes jello-v {
+  0%,
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  40% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  50% {
+    transform: scale3d(0.85, 1.15, 1);
+  }
+  65% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  75% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

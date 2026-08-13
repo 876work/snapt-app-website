@@ -1,0 +1,151 @@
+.panel {
+  background: var(--yellow);
+  border-radius: var(--r-sheet);
+  padding: clamp(32px, 5vw, 60px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px;
+  align-items: center;
+}
+
+.copy {
+  flex: 1 1 380px;
+  /* The panel's own padding eats 64px at 320px wide, so a hard 280px floor
+     (as in the prototype) pushed the page into horizontal scroll. */
+  min-width: min(280px, 100%);
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: var(--w-extrabold);
+  letter-spacing: -1px;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.badges {
+  margin-top: 24px;
+}
+
+.fineprint {
+  margin: 16px 0 0;
+  font-size: 13px;
+  color: var(--ink);
+  opacity: 0.75;
+  font-weight: var(--w-medium);
+}
+
+/* The desktop dead-end fix: a QR code plus an email-me-the-link fallback. */
+.desktopCard {
+  flex: 1 1 320px;
+  min-width: min(280px, 100%);
+  background: var(--card);
+  border-radius: var(--r-book-card);
+  padding: 26px;
+  box-shadow: var(--shadow-float);
+}
+
+.desktopTitle {
+  font-size: 16px;
+  font-weight: var(--w-bold);
+}
+
+.qrRow {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.qrCode {
+  width: 104px;
+  height: 104px;
+  flex: 0 0 auto;
+  border-radius: var(--r-sm);
+  background: var(--off-white);
+  border: 1.5px dashed var(--yellow-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: var(--w-bold);
+  color: var(--gold-body);
+  text-align: center;
+  line-height: 1.35;
+  padding: 8px;
+}
+
+.qrText {
+  margin: 0;
+  font-size: var(--fs-body);
+  color: var(--grey);
+  line-height: 1.55;
+}
+
+.rule {
+  border-top: 1px solid var(--border);
+  margin: 20px 0 16px;
+}
+
+.emailForm {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.emailInput {
+  flex: 1 1 180px;
+  min-width: 0;
+  height: 48px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-input);
+  padding: 0 16px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--off-white);
+}
+
+.emailSubmit {
+  height: 48px;
+  padding: 0 22px;
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  border-radius: var(--r-input);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: var(--w-bold);
+  cursor: pointer;
+}
+
+.emailSubmit:hover {
+  opacity: 0.85;
+}
+
+.disclaimer {
+  margin: 10px 0 0;
+  font-size: 11.5px;
+  color: var(--placeholder);
+}
+
+.sentBanner {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: var(--tone-live-bg);
+  border-radius: var(--r-input);
+  padding: 14px 16px;
+}
+
+.sentMark {
+  color: var(--tone-live-fg);
+  font-weight: var(--w-extrabold);
+}
+
+.sentText {
+  font-size: 14px;
+  color: var(--tone-live-fg);
+  font-weight: var(--w-semibold);
+}

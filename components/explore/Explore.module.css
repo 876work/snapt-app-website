@@ -1,0 +1,313 @@
+.page {
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+/* --- Hero --- */
+
+.hero {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: clamp(40px, 6vw, 72px) 20px 0;
+  text-align: center;
+}
+
+.overline {
+  margin: 0;
+  font-size: var(--fs-overline);
+  font-weight: var(--w-extrabold);
+  letter-spacing: var(--ls-overline);
+  color: var(--gold-body);
+  animation: riseLg 0.6s ease 0.05s both;
+}
+
+.heroTitle {
+  margin: 10px auto 0;
+  font-size: clamp(32px, 5vw, 54px);
+  font-weight: var(--w-extrabold);
+  letter-spacing: -1.2px;
+  line-height: 1.06;
+  max-width: 18ch;
+  text-wrap: balance;
+  animation: riseLg 0.6s ease 0.12s both;
+}
+
+.heroLede {
+  margin: 16px auto 0;
+  font-size: clamp(15px, 1.8vw, 17px);
+  color: var(--grey);
+  line-height: 1.55;
+  max-width: 52ch;
+  text-wrap: pretty;
+  animation: riseLg 0.6s ease 0.2s both;
+}
+
+/* --- Phone fan --- */
+
+.fanSection {
+  padding: clamp(36px, 5vw, 64px) 0 0;
+  overflow: hidden;
+}
+
+.fan {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0;
+  padding: 24px 0 12px;
+}
+
+.fanItem {
+  flex: 0 0 auto;
+  animation: riseFan 0.8s ease both;
+}
+
+.phoneShell {
+  background: var(--ink);
+  border-radius: 34px;
+  padding: 8px;
+  box-shadow: 0 20px 44px rgba(26, 26, 26, 0.22);
+}
+
+.phoneScreen {
+  border-radius: 26px;
+  overflow: hidden;
+  aspect-ratio: 390 / 844;
+  background: var(--warm-fill);
+}
+
+.phoneScreen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.phoneShellCenter {
+  composes: phoneShell;
+  border-radius: 38px;
+  padding: 9px;
+  box-shadow: 0 28px 56px rgba(26, 26, 26, 0.28);
+}
+
+.phoneScreenCenter {
+  composes: phoneScreen;
+  border-radius: 30px;
+}
+
+/* --- Feature rows --- */
+
+.rows {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: clamp(56px, 8vw, 104px) 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(64px, 9vw, 120px);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(28px, 5vw, 72px);
+}
+
+.rowMedia {
+  flex: 1 1 260px;
+  min-width: 250px;
+  display: flex;
+  justify-content: center;
+}
+
+.rowCopy {
+  flex: 1 1 340px;
+  min-width: 270px;
+}
+
+/* Photo first in source order; `order` flips it to the right on wide rows. */
+.mediaRight {
+  order: 2;
+}
+
+.copyLeft {
+  order: 1;
+}
+
+.rowOverline {
+  margin: 0;
+  font-size: var(--fs-overline);
+  font-weight: var(--w-extrabold);
+  letter-spacing: var(--ls-overline);
+  color: var(--gold-body);
+}
+
+.rowTitle {
+  margin: 10px 0 0;
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: var(--w-extrabold);
+  letter-spacing: -0.6px;
+  text-wrap: pretty;
+}
+
+.rowBody {
+  margin: 14px 0 0;
+  font-size: 15px;
+  color: var(--grey);
+  line-height: 1.6;
+  max-width: 46ch;
+  text-wrap: pretty;
+}
+
+.rowLink {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: var(--w-bold);
+  color: var(--yellow-dark);
+  text-decoration: none;
+}
+
+.rowPhoneWrap {
+  position: relative;
+  width: clamp(200px, 24vw, 250px);
+}
+
+.rowPhone {
+  width: clamp(200px, 24vw, 250px);
+  background: var(--ink);
+  border-radius: 38px;
+  padding: 9px;
+  box-shadow: 0 24px 48px rgba(26, 26, 26, 0.22);
+}
+
+.rowPhoneBob {
+  composes: rowPhone;
+  animation: bobPhoneSm 6s ease-in-out infinite;
+}
+
+.rowPhoneScreen {
+  border-radius: 30px;
+  overflow: hidden;
+  aspect-ratio: 390 / 844;
+  background: var(--warm-fill);
+}
+
+.rowPhoneScreen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.popCard {
+  position: absolute;
+  background: var(--card);
+  border-radius: var(--r-card);
+  padding: 13px 17px;
+  box-shadow: 0 8px 24px rgba(26, 26, 26, 0.18);
+  max-width: 230px;
+}
+
+.popLeft {
+  composes: popCard;
+  left: max(-70px, -9vw);
+  top: 64px;
+}
+
+.popRight {
+  composes: popCard;
+  right: max(-70px, -9vw);
+  bottom: 96px;
+}
+
+.popOverline {
+  font-size: var(--fs-overline);
+  font-weight: var(--w-extrabold);
+  letter-spacing: var(--ls-overline);
+  color: var(--gold-text);
+}
+
+.popTitle {
+  font-size: 14px;
+  font-weight: var(--w-bold);
+  margin-top: 4px;
+  line-height: 1.3;
+}
+
+.popMeta {
+  font-size: 11.5px;
+  color: var(--grey);
+  margin-top: 2px;
+  line-height: 1.35;
+}
+
+/* --- CTA --- */
+
+.ctaSection {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: clamp(64px, 9vw, 120px) 20px clamp(48px, 7vw, 88px);
+}
+
+.ctaPanel {
+  background: var(--yellow);
+  border-radius: var(--r-sheet);
+  padding: clamp(32px, 5vw, 56px);
+  text-align: center;
+}
+
+.ctaTitle {
+  margin: 0 auto;
+  font-size: clamp(26px, 3.6vw, 40px);
+  font-weight: var(--w-extrabold);
+  letter-spacing: -0.8px;
+  max-width: 22ch;
+  text-wrap: balance;
+}
+
+.ctaButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+  justify-content: center;
+}
+
+.ctaPrimary {
+  background: var(--ink);
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: var(--w-bold);
+  padding: 15px 26px;
+  border-radius: var(--r-card);
+}
+
+.ctaPrimary:hover {
+  color: #fff;
+  opacity: 0.85;
+}
+
+.ctaSecondary {
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: var(--w-bold);
+  padding: 15px 26px;
+  border-radius: var(--r-card);
+}
+
+.ctaSecondary:hover {
+  color: var(--ink);
+  opacity: 0.85;
+}
+
+.ctaFineprint {
+  margin: 16px 0 0;
+  font-size: 13px;
+  color: var(--ink);
+  opacity: 0.75;
+  font-weight: var(--w-medium);
+}

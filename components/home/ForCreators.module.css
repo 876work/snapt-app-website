@@ -1,0 +1,102 @@
+.panel {
+  /* creatorPanelDark default from the prototype's props. */
+  background: var(--ink);
+  color: #fff;
+  border-radius: var(--r-sheet);
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.copy {
+  flex: 1 1 380px;
+  min-width: 290px;
+  padding: clamp(30px, 5vw, 56px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.overline {
+  margin: 0;
+  font-size: var(--fs-overline);
+  font-weight: var(--w-extrabold);
+  letter-spacing: var(--ls-overline);
+  color: var(--yellow);
+}
+
+.title {
+  margin: 10px 0 0;
+  font-size: clamp(26px, 3.6vw, 40px);
+  font-weight: var(--w-extrabold);
+  letter-spacing: -0.8px;
+  text-wrap: pretty;
+}
+
+.blurb {
+  margin: 16px 0 0;
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.85;
+  max-width: 52ch;
+  text-wrap: pretty;
+}
+
+.list {
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 14.5px;
+}
+
+.list li {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.tick {
+  color: var(--yellow);
+  font-weight: var(--w-extrabold);
+}
+
+.cta {
+  margin-top: 28px;
+  background: var(--yellow);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: var(--w-bold);
+  padding: 14px 24px;
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-primary);
+}
+
+.cta:hover {
+  color: var(--ink);
+  opacity: 0.85;
+}
+
+.fineprint {
+  margin: 14px 0 0;
+  font-size: 12.5px;
+  opacity: 0.6;
+}
+
+.media {
+  flex: 1 1 320px;
+  min-width: 260px;
+  min-height: 340px;
+  position: relative;
+}
+
+.media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

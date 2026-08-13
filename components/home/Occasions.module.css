@@ -1,0 +1,87 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.tile {
+  text-decoration: none;
+  color: var(--ink);
+  display: block;
+}
+
+.tile:hover {
+  color: var(--ink);
+  opacity: 0.85;
+}
+
+.frame {
+  border-radius: var(--r-card);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.title {
+  font-size: 17px;
+  font-weight: var(--w-bold);
+  margin-top: 12px;
+}
+
+.blurb {
+  font-size: var(--fs-body);
+  color: var(--grey);
+  line-height: 1.45;
+  margin-top: 2px;
+}
+
+/* Closing "Something else?" tile — no photo, yellow soft-fill. */
+.promptTile {
+  border-radius: var(--r-card);
+  background: var(--yellow-soft);
+  border: 1px solid var(--yellow-soft-border);
+  aspect-ratio: 4 / 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px;
+}
+
+.promptTitle {
+  font-size: 21px;
+  font-weight: var(--w-extrabold);
+  letter-spacing: var(--ls-tight);
+  line-height: 1.25;
+  text-wrap: pretty;
+}
+
+.promptBody {
+  font-size: var(--fs-body);
+  color: var(--gold-body);
+  line-height: 1.5;
+  margin: 10px 0 18px;
+}
+
+.promptCta {
+  background: var(--yellow);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: var(--w-bold);
+  padding: 12px 20px;
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-primary);
+}
+
+.promptCta:hover {
+  color: var(--ink);
+  opacity: 0.85;
+}

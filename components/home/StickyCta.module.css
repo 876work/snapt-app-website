@@ -1,0 +1,40 @@
+.bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+  background: rgba(250, 250, 250, 0.96);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: center;
+}
+
+/* Mobile only — desktop already has the header CTA and the download panel. */
+@media (min-width: 880px) {
+  .bar {
+    display: none;
+  }
+}
+
+.cta {
+  width: 100%;
+  max-width: 480px;
+  background: var(--yellow);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: var(--w-bold);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-primary);
+}
+
+.cta:hover {
+  color: var(--ink);
+  opacity: 0.85;
+}

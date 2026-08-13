@@ -1,0 +1,248 @@
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: flex-start;
+}
+
+.intro {
+  flex: 1 1 280px;
+  min-width: 250px;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(24px, 3.2vw, 34px);
+  font-weight: var(--w-extrabold);
+  letter-spacing: -0.6px;
+  text-wrap: pretty;
+}
+
+.blurb {
+  margin: 12px 0 0;
+  font-size: 14px;
+  color: var(--grey);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.rule {
+  border-top: 1px solid var(--border);
+  margin: 22px 0 18px;
+}
+
+.routes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: var(--fs-body);
+}
+
+.route {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: var(--w-semibold);
+}
+
+.route:hover {
+  color: var(--ink);
+  opacity: 0.7;
+}
+
+.serving {
+  margin: 18px 0 0;
+  font-size: 11.5px;
+  color: var(--placeholder);
+}
+
+.formCol {
+  flex: 0 1 380px;
+  min-width: 290px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px;
+  border-radius: var(--r-book-card);
+  background: var(--ink);
+  border: 1px solid #333;
+  box-shadow: var(--shadow-float);
+}
+
+.formTitle {
+  margin: 0 0 2px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  font-size: 24px;
+  font-weight: var(--w-extrabold);
+  letter-spacing: -0.6px;
+  color: var(--yellow);
+}
+
+.dot,
+.dotPulse {
+  position: absolute;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--yellow);
+}
+
+.dotPulse {
+  animation: pulseDot 1.4s linear infinite;
+}
+
+.formNote {
+  margin: 0 0 6px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+}
+
+.nameRow {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+}
+
+/* Floating labels: the label sits over the input and lifts on focus or once
+   the field has content (`:not(:placeholder-shown)`). */
+.field {
+  position: relative;
+  display: block;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.input {
+  width: 100%;
+  background: #262626;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--r-sm);
+  font-family: inherit;
+  font-size: 15px;
+  padding: 22px 12px 8px;
+  outline: 0;
+  transition: border-color 0.2s ease;
+}
+
+.input:focus {
+  border-color: var(--yellow);
+}
+
+textarea.input {
+  min-height: 116px;
+  resize: vertical;
+  line-height: 1.5;
+  display: block;
+}
+
+.input + span {
+  position: absolute;
+  left: 13px;
+  top: 7px;
+  font-size: 10px;
+  font-weight: var(--w-extrabold);
+  letter-spacing: var(--ls-overline);
+  color: var(--yellow);
+  pointer-events: none;
+  transition: 0.22s ease;
+}
+
+.input:placeholder-shown + span {
+  top: 15px;
+  font-size: 14px;
+  font-weight: var(--w-medium);
+  letter-spacing: 0;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.input:focus + span {
+  top: 7px;
+  font-size: 10px;
+  font-weight: var(--w-extrabold);
+  letter-spacing: var(--ls-overline);
+  color: var(--yellow);
+}
+
+textarea.input:placeholder-shown + span {
+  top: 18px;
+}
+
+.submit {
+  margin-top: 4px;
+  border: none;
+  outline: none;
+  height: 48px;
+  border-radius: var(--r-card);
+  background: var(--yellow);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: var(--w-bold);
+  cursor: pointer;
+  box-shadow: var(--shadow-primary);
+}
+
+.submit:hover {
+  opacity: 0.85;
+}
+
+.disclaimer {
+  margin: 6px 0 0;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.45);
+  text-align: center;
+}
+
+.sentCard {
+  padding: 30px 24px;
+  border-radius: var(--r-book-card);
+  background: var(--ink);
+  border: 1px solid #333;
+  box-shadow: var(--shadow-float);
+}
+
+.sentBanner {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: var(--tone-live-bg);
+  border-radius: var(--r-input);
+  padding: 14px 16px;
+}
+
+.sentMark {
+  color: var(--tone-live-fg);
+  font-weight: var(--w-extrabold);
+}
+
+.sentText {
+  font-size: 14px;
+  color: var(--tone-live-fg);
+  font-weight: var(--w-semibold);
+}
+
+.resetButton {
+  margin-top: 16px;
+  width: 100%;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--r-input);
+  background: none;
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: var(--w-semibold);
+  cursor: pointer;
+}
+
+.resetButton:hover {
+  opacity: 0.75;
+}

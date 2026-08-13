@@ -1,0 +1,93 @@
+/* Shared section scaffolding for the homepage. */
+
+.section {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: clamp(48px, 7vw, 88px) 20px 0;
+}
+
+.sectionNarrow {
+  composes: section;
+  max-width: 840px;
+}
+
+.sectionTight {
+  composes: section;
+  padding-top: clamp(28px, 4vw, 48px);
+}
+
+.sectionEnd {
+  composes: section;
+  padding-bottom: clamp(48px, 7vw, 88px);
+}
+
+.overline {
+  margin: 0;
+  font-size: var(--fs-overline);
+  font-weight: var(--w-extrabold);
+  letter-spacing: var(--ls-overline);
+  color: var(--gold-body);
+}
+
+.h2 {
+  margin: 0;
+  font-size: clamp(26px, 3.6vw, 40px);
+  font-weight: var(--w-extrabold);
+  letter-spacing: -0.8px;
+  text-wrap: pretty;
+}
+
+.h2Spaced {
+  composes: h2;
+  margin: 8px 0 0;
+}
+
+/* Bordered white card — the "either a border OR a shadow" rule from the DS. */
+.cardBordered {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card-lg);
+  padding: 24px;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: var(--w-bold);
+  margin-top: 14px;
+}
+
+.cardBody {
+  margin: 6px 0 0;
+  font-size: var(--fs-body);
+  color: var(--grey);
+  line-height: 1.55;
+}
+
+.primaryButton {
+  background: var(--yellow);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: var(--w-bold);
+  padding: 14px 22px;
+  border-radius: var(--r-card);
+  text-align: center;
+  box-shadow: var(--shadow-primary);
+}
+
+.primaryButton:hover {
+  color: var(--ink);
+  opacity: 0.85;
+}
+
+.inkButton {
+  composes: primaryButton;
+  background: var(--ink);
+  color: #fff;
+  box-shadow: none;
+}
+
+.inkButton:hover {
+  color: #fff;
+  opacity: 0.85;
+}

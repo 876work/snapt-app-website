@@ -1,0 +1,16 @@
+:root{
+/* Brand */
+--yellow:#FFB800;--yellow-dark:#B98600;--yellow-soft:#FFF9EC;--yellow-soft-border:#F2E3B8;--yellow-tint:#FFF4D6;--gold-text:#8A7530;--gold-body:#8A6800;--gold-icon:#E0A400;
+/* Ink & neutrals */
+--ink:#1A1A1A;--grey:#767676;--grey-warm:#8A8377;--grey-light:#B4B1AA;--grey-faint:#A8A29A;--placeholder:#9A9A9A;
+/* Surfaces */
+--off-white:#FAFAFA;--card:#FFFFFF;--canvas:#EDEBE6;--auth-bg:#F5F1E8;--seg-bg:#EFEDE7;--seg-bg-alt:#F4F1EA;--warm-fill:#F1EEE7;--image-fallback:#F1EEE7;--how-bg:#FFF8E9;--how-border:#F3E6C4;
+/* Borders */
+--border:#ECECEC;--border-warm:#EDEAE3;--divider:#ECEAE4;
+/* Semantic */
+--success:#2ECC71;--success-deep:#1B9A57;--success-dot:#1EC46F;--error:#EB5757;--error-dark:#C0392B;--error-soft:#FFF1F0;--error-soft-border:#F6D5D2;
+/* Status-tag tones */
+--tone-live-bg:#E7F8EE;--tone-live-fg:#1E7A45;--tone-ready-bg:#E9F3FF;--tone-ready-fg:#1F5FA8;--tone-ready-dot:#3E8BE0;--tone-calm-bg:#F1EEE7;--tone-calm-fg:#6F6A60;--tone-calm-dot:#B8B2A6;
+/* Aliases */
+--text-body:var(--grey);--text-heading:var(--ink);--surface-card:var(--card);--surface-app:var(--off-white);--accent:var(--yellow);--accent-text:var(--yellow-dark);
+}

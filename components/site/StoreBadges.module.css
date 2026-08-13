@@ -1,0 +1,45 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--ink);
+  color: #fff;
+  text-decoration: none;
+  border-radius: var(--r-sm);
+  padding: 9px 18px 9px 14px;
+  min-height: 44px;
+}
+
+.badge:hover {
+  color: #fff;
+  opacity: 0.85;
+}
+
+.badgePlay {
+  gap: 10px;
+}
+
+.label {
+  text-align: left;
+  line-height: 1.15;
+}
+
+.small {
+  display: block;
+  font-size: 10.5px;
+  font-weight: var(--w-medium);
+  opacity: 0.85;
+}
+
+.large {
+  display: block;
+  font-size: 17px;
+  font-weight: var(--w-bold);
+}

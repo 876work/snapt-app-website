@@ -1,0 +1,108 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--r-book-card);
+  box-shadow: var(--shadow-float);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.media {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.body {
+  padding: 26px 26px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.title {
+  margin: 0;
+  font-size: 21px;
+  font-weight: var(--w-extrabold);
+  letter-spacing: var(--ls-tight);
+}
+
+.price {
+  font-size: var(--fs-caption);
+  font-weight: var(--w-extrabold);
+  padding: 5px 12px;
+  border-radius: var(--r-pill);
+  white-space: nowrap;
+}
+
+.priceSession {
+  composes: price;
+  background: var(--tone-live-bg);
+  color: var(--tone-live-fg);
+}
+
+.priceEdit {
+  composes: price;
+  background: var(--tone-ready-bg);
+  color: var(--tone-ready-fg);
+}
+
+.blurb {
+  margin: 0;
+  font-size: 14px;
+  color: var(--grey);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.list li {
+  display: flex;
+  gap: 9px;
+  align-items: baseline;
+}
+
+.tickSession {
+  color: var(--tone-live-fg);
+  font-weight: var(--w-extrabold);
+}
+
+.tickEdit {
+  color: var(--tone-ready-fg);
+  font-weight: var(--w-extrabold);
+}
+
+.cta {
+  margin-top: auto;
+}
