@@ -8,17 +8,35 @@ design system's four token files are copied verbatim into `styles/tokens/` and
 everything styles against `var(--*)`.
 
 ```
-app/            layout (metadata/OG), / (homepage), /explore
+app/            layout (metadata/OG), / (coming soon), /home, /explore
 components/
-  site/         Header, Footer, FooterSlim, StoreBadges, NewsletterForm
+  site/         Header, Footer, StoreBadges, NewsletterForm, HoneypotField
   home/         one component + CSS module per section
   explore/      PhoneFan, FeatureRows, Reveal
   fx/           SideRays, MaskedHeading, AccordionGallery (ported from project/*.jsx)
   ds/           VerifiedBadge, StatusTag (ported verbatim from _ds_bundle.js)
-lib/            links.ts (store URLs, contact routes), faq.ts (FAQ copy)
+lib/            links.ts, nav.ts (HOME_PATH + header nav), faq.ts, netlifyForms.ts
 styles/         globals.css + tokens/ (verbatim design-system copies)
 public/assets/  img/ (occasion + section photos), screens/ (app screenshots)
 ```
+
+## Routes
+
+| Route | What it is |
+| --- | --- |
+| `/` | Coming-soon holding page — brand mark, one line, contact email |
+| `/home` | The full marketing homepage |
+| `/explore` | Explore the app |
+
+**To launch**, move `app/home/page.tsx` back to `app/page.tsx` and set
+`HOME_PATH` in `lib/nav.ts` to `'/'`. Every in-site link to the homepage — the
+header nav, the footer columns, the Explore CTA and "Become a creator" link —
+goes through that one constant, so nothing else needs touching.
+
+`/home` and `/explore` stay publicly reachable by direct URL while `/` shows the
+holding page; they are simply not linked from it. If you want them hidden from
+search engines until launch, add `robots: { index: false }` to each page's
+`metadata` — say the word and it is a two-line change.
 
 ```bash
 npm install

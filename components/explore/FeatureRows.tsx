@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import StatusTag from '@/components/ds/StatusTag';
 import VerifiedBadge from '@/components/ds/VerifiedBadge';
+import { HOME_PATH } from '@/lib/nav';
 import Reveal from './Reveal';
 import styles from './Explore.module.css';
 
@@ -105,7 +106,7 @@ const ROWS: Row[] = [
     overline: 'CREATOR MODE',
     title: 'One app, both sides of the lens',
     body: 'Creators switch into their own dashboard — see booked jobs, track earnings, and cash out. Keep 68% of every booking, with payouts available 7 days after delivery.',
-    link: { href: '/#creators', label: 'Become a creator →' },
+    link: { href: `${HOME_PATH}#creators`, label: 'Become a creator →' },
     mediaSide: 'right',
     screen: { src: '/assets/screens/row-creator.webp', alt: 'Creator earnings dashboard' },
     card: {
@@ -132,7 +133,7 @@ export default function FeatureRows() {
               <div className={styles.rowPhoneWrap}>
                 <div className={row.bobPhone ? styles.rowPhoneBob : styles.rowPhone}>
                   <div className={styles.rowPhoneScreen}>
-                    {/* eslint-disable-next-line @next/next/no-img-element -- fills a fixed 390:844 frame */}
+                    {/* eslint-disable-next-line @next/next/no-img-element -- fills a fixed 440:956 frame */}
                     <img src={row.screen.src} alt={row.screen.alt} />
                   </div>
                 </div>

@@ -1,0 +1,11 @@
+.page {
+  min-width: 320px;
+}
+
+/* Clears the fixed mobile CTA bar so the footer's last line isn't hidden
+   behind it. (The prototype overlapped it.) */
+@media (max-width: 879px) {
+  .page {
+    padding-bottom: 74px;
+  }
+}

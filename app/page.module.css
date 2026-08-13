@@ -1,11 +1,76 @@
+/* Coming-soon holding page. Ink on brand yellow is the signature pairing; the
+   card keeps the brand mark on white, where both halves of it read. */
+
 .page {
-  min-width: 320px;
+  min-height: 100dvh;
+  background: var(--yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
 }
 
-/* Clears the fixed mobile CTA bar so the footer's last line isn't hidden
-   behind it. (The prototype overlapped it.) */
-@media (max-width: 879px) {
-  .page {
-    padding-bottom: 74px;
-  }
+.card {
+  width: 100%;
+  max-width: 520px;
+  background: var(--card);
+  border-radius: var(--r-sheet);
+  box-shadow: var(--shadow-float);
+  padding: clamp(30px, 6vw, 52px);
+  text-align: center;
+  animation: rise 0.6s ease both;
+}
+
+.mark {
+  height: 40px;
+  width: auto;
+  display: block;
+  margin: 0 auto 22px;
+}
+
+.title {
+  margin: 18px 0 0;
+  font-size: clamp(28px, 5vw, 38px);
+  font-weight: var(--w-extrabold);
+  letter-spacing: -0.8px;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.blurb {
+  margin: 14px 0 0;
+  font-size: clamp(14.5px, 2vw, 16px);
+  color: var(--grey);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.rule {
+  border-top: 1px solid var(--border);
+  margin: 26px 0 22px;
+}
+
+.contact {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.email {
+  color: var(--yellow-dark);
+  font-weight: var(--w-bold);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.email:hover {
+  color: var(--gold-body);
+  text-decoration: underline;
+}
+
+.serving {
+  margin: 20px 0 0;
+  font-size: 12px;
+  color: var(--placeholder);
 }

@@ -1,36 +1,41 @@
-import Header from '@/components/site/Header';
-import Footer from '@/components/site/Footer';
-import Hero from '@/components/home/Hero';
-import Stats from '@/components/home/Stats';
-import Occasions from '@/components/home/Occasions';
-import HowItWorks from '@/components/home/HowItWorks';
-import TwoPaths from '@/components/home/TwoPaths';
-import Trust from '@/components/home/Trust';
-import Portfolio from '@/components/home/Portfolio';
-import ForCreators from '@/components/home/ForCreators';
-import Faq from '@/components/home/Faq';
-import Contact from '@/components/home/Contact';
-import Download from '@/components/home/Download';
-import StickyCta from '@/components/home/StickyCta';
+import StatusTag from '@/components/ds/StatusTag';
+import { CONTACT_EMAIL } from '@/lib/links';
 import styles from './page.module.css';
 
-export default function HomePage() {
+/**
+ * Coming-soon holding page.
+ *
+ * The full marketing site is built and still deployed — homepage at
+ * `HOME_PATH` (/home), plus /explore — it just isn't linked from here yet.
+ * To launch, move the homepage back to this route and point HOME_PATH at '/'.
+ */
+export default function ComingSoonPage() {
   return (
-    <div className={styles.page}>
-      <Header currentPath="/" homeHref="#top" ctaHref="#download" />
-      <Hero />
-      <Stats />
-      <Occasions />
-      <HowItWorks />
-      <TwoPaths />
-      <Trust />
-      <Portfolio />
-      <ForCreators />
-      <Faq />
-      <Contact />
-      <Download />
-      <Footer />
-      <StickyCta />
-    </div>
+    <main className={styles.page}>
+      <div className={styles.card}>
+        {/* eslint-disable-next-line @next/next/no-img-element -- fixed-height brand mark */}
+        <img src="/assets/snapt-mark.webp" alt="Snapt" className={styles.mark} />
+
+        <StatusTag tone="soon" label="COMING SOON" />
+
+        <h1 className={styles.title}>Something worth photographing is coming.</h1>
+
+        <p className={styles.blurb}>
+          Snapt connects you with vetted local photographers and videographers — booked, edited,
+          and delivered in one app. We&rsquo;re putting the finishing touches on it now.
+        </p>
+
+        <div className={styles.rule} />
+
+        <p className={styles.contact}>
+          Questions? Email us at{' '}
+          <a href={`mailto:${CONTACT_EMAIL}`} className={styles.email}>
+            {CONTACT_EMAIL}
+          </a>
+        </p>
+
+        <p className={styles.serving}>Currently serving northern Saint Lucia.</p>
+      </div>
+    </main>
   );
 }

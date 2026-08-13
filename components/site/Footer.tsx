@@ -8,6 +8,7 @@ import {
   PRIVACY_URL,
   TERMS_URL,
 } from '@/lib/links';
+import { HOME_PATH } from '@/lib/nav';
 import NewsletterForm from './NewsletterForm';
 import styles from './Footer.module.css';
 
@@ -36,19 +37,19 @@ export default function Footer() {
 
           <nav aria-label="Explore" className={styles.nav}>
             <div className={styles.overline}>EXPLORE</div>
-            <Link href="/#occasions" className={styles.navLink}>
+            <Link href={`${HOME_PATH}#occasions`} className={styles.navLink}>
               Occasions
             </Link>
             <Link href="/explore" className={styles.navLink}>
               Explore the app
             </Link>
-            <Link href="/#how" className={styles.navLink}>
+            <Link href={`${HOME_PATH}#how`} className={styles.navLink}>
               How it works
             </Link>
-            <Link href="/#creators" className={styles.navLink}>
+            <Link href={`${HOME_PATH}#creators`} className={styles.navLink}>
               Become a creator
             </Link>
-            <Link href="/#faq" className={styles.navLink}>
+            <Link href={`${HOME_PATH}#faq`} className={styles.navLink}>
               FAQ
             </Link>
           </nav>

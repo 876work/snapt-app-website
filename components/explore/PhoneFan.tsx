@@ -74,7 +74,7 @@ export default function PhoneFan() {
           >
             <div className={phone.center ? styles.phoneShellCenter : styles.phoneShell}>
               <div className={phone.center ? styles.phoneScreenCenter : styles.phoneScreen}>
-                {/* eslint-disable-next-line @next/next/no-img-element -- fills a fixed 390:844 frame */}
+                {/* eslint-disable-next-line @next/next/no-img-element -- fills a fixed 440:956 frame */}
                 <img src={phone.src} alt={phone.alt} />
               </div>
             </div>
