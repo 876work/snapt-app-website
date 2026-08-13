@@ -55,7 +55,7 @@ Every one of these is marked with a `TODO(launch)` comment in the source.
 | QR codes (dashed placeholder boxes in hero + download block) | `lib/links.ts` → `STORE_ONELINK`, `Hero.tsx`, `Download.tsx` |
 | Privacy policy + Terms URLs (currently `#`) | `lib/links.ts` |
 | GA4 `gtag.js` snippet | `app/layout.tsx` |
-| FAQ answers marked `[Placeholder …]` | `lib/faq.ts` |
+| Cancellation FAQ answer — check it against the terms once published | `lib/faq.ts` |
 | **OG share image** — `og-image.png` is referenced but does not exist | drop a 1200 × 630 at `public/assets/og-image.png` |
 
 The OG image matters more than usual: the brief calls out that this link will

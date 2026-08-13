@@ -13,9 +13,6 @@ export default function Faq() {
   return (
     <section id="faq" className={sections.sectionNarrow}>
       <h2 className={sections.h2}>Questions, answered</h2>
-      <p className={styles.note}>
-        Answers below are placeholders; the final copy will match our published terms word for word.
-      </p>
 
       {FAQ_GROUPS.map((group) => (
         <div key={group.label} className={styles.group}>

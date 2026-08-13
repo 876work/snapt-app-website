@@ -1,11 +1,5 @@
-.note {
-  margin: 10px 0 0;
-  font-size: var(--fs-body);
-  color: var(--grey);
-}
-
 .group {
-  margin-top: 34px;
+  margin-top: 30px;
 }
 
 .groupLabel {
