@@ -30,15 +30,15 @@ const GROUPS: { label: string; items: [string, string][] }[] = [
       ],
       [
         'How does pricing work?',
-        'Standard pricing, no haggling, no bidding. In-person sessions start at $60 USD for an hour of photos, and remote edits start at $25 USD. You see the full price before you pay, including the service fee. Every creator charges the same rate for the same work, so you’re choosing a photographer rather than negotiating a price. Prices display in USD or XCD, and charges are processed in USD.',
+        'Standard pricing, no haggling, no bidding. In-person sessions start at $60 USD for an hour of photos, and remote edits start at $25 USD. You see the full price before you pay. Every creator charges the same rate for the same work, so you’re choosing a photographer rather than negotiating a price. Prices display in USD or XCD, and charges are processed in USD.',
       ],
       [
         'Can I choose my own creator?',
-        'Yes. You’ll see who’s available for your date and time, with their specialties and past work, and you can pick whoever fits. Or choose “Match me automatically” and we’ll assign the best available creator for your session.',
+        'By default, you’re matched with a vetted creator who’s available for your date and time. If you’d rather choose yourself, you can browse the creators who are free for that slot — with their specialties and past work — and pick whoever fits.',
       ],
       [
         'Do I need to pay a deposit?',
-        'No. You pay in full when you book, and your card is charged once. If you cancel within the free window, you’re refunded automatically.',
+        'No. You pay in full when you book, and your card is charged once. If you cancel within the free window, the session cost is refunded automatically.',
       ],
     ],
   },
@@ -55,7 +55,7 @@ const GROUPS: { label: string; items: [string, string][] }[] = [
       ],
       [
         'What if I’m not happy with the edits?',
-        'Every order includes one free revision round. Tell your creator what you’d like changed and they’ll re-deliver. Additional rounds are available for $15 plus fee.',
+        'Every order includes one free revision round. Tell your creator what you’d like changed and they’ll re-deliver. Additional rounds are available for $15.',
       ],
     ],
   },
@@ -72,7 +72,7 @@ const GROUPS: { label: string; items: [string, string][] }[] = [
       ],
       [
         'What if my creator cancels?',
-        'You get a full refund, including the service fee, and we match you with another available creator. You’re never left out of pocket for a cancellation that wasn’t yours.',
+        'You get the session cost back in full, and we match you with another available creator. You’re never left out of pocket for a cancellation that wasn’t yours.',
       ],
     ],
   },
@@ -81,7 +81,7 @@ const GROUPS: { label: string; items: [string, string][] }[] = [
     items: [
       [
         'What is the cancellation and refund policy?',
-        'More than 48 hours before your session, you get the session cost back in full. Between 24 and 48 hours, you’re charged 50%. Under 24 hours, the session is charged in full. The service fee isn’t refundable at any tier, because it covers payment processing we’ve already paid. If nobody has accepted your booking yet, you get everything back including the fee.',
+        'More than 48 hours before your session, you get the session cost back in full. Between 24 and 48 hours, you’re charged 50%. Under 24 hours, the session is charged in full. If nobody has accepted your booking yet, you get the session cost back in full whenever you cancel.',
       ],
       [
         'How do I become a Snapt creator?',

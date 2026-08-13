@@ -25,7 +25,7 @@ export default function ForCreators() {
               <span className={styles.tick} aria-hidden="true">
                 ✓
               </span>
-              Payouts 7 days after delivery — bank transfer, PayPal, or cash pickup
+              Payouts 7 days after delivery — straight to your local bank account
             </li>
             <li>
               <span className={styles.tick} aria-hidden="true">
