@@ -37,9 +37,6 @@ Every one of these is marked with a `TODO(launch)` comment in the source.
 | QR codes (dashed placeholder boxes in hero + download block) | `lib/links.ts` → `STORE_ONELINK`, `Hero.tsx`, `Download.tsx` |
 | Privacy policy + Terms URLs (currently `#`) | `lib/links.ts` |
 | GA4 `gtag.js` snippet | `app/layout.tsx` |
-| Contact form submission | `components/home/Contact.tsx` |
-| Newsletter subscription | `components/site/NewsletterForm.tsx` |
-| "Email me the link" submission | `components/home/Download.tsx` |
 | FAQ answers marked `[Placeholder …]` | `lib/faq.ts` |
 | **OG share image** — `og-image.png` is referenced but does not exist | drop a 1200 × 630 at `public/assets/og-image.png` |
 
@@ -47,9 +44,44 @@ The OG image matters more than usual: the brief calls out that this link will
 spread on WhatsApp in Saint Lucia. Until that file exists the share preview has
 no image.
 
-The forms all use native `required` validation, so an empty submit is blocked
-rather than falling through to the success state. They currently only swap to a
-confirmation — nothing is sent anywhere.
+## Forms (Netlify Forms)
+
+All three forms submit to [Netlify Forms](https://docs.netlify.com/manage/forms/setup/).
+
+| Form name | Component | Fields |
+| --- | --- | --- |
+| `contact` | `components/home/Contact.tsx` | `firstName`, `lastName`, `email`, `message` |
+| `newsletter` | `components/site/NewsletterForm.tsx` | `newsletter` |
+| `app-link` | `components/home/Download.tsx` | `email` |
+
+Netlify's build bot registers forms by parsing static HTML in the deploy, and the
+Next.js runtime does not emit parseable HTML for app routes. So the forms are
+declared in **`public/__forms.html`** — a hidden static file carrying one
+`<form data-netlify="true">` per form with matching field names. The React forms
+post urlencoded data to that same path with a `form-name` field
+(`lib/netlifyForms.ts`).
+
+**If you add, rename, or remove a form field, change it in `public/__forms.html`
+too.** Netlify only stores fields it registered at build time; anything not
+declared there is silently dropped from the submission.
+
+Netlify stores submissions — it does not forward them. Add a notification under
+**Forms → Form notifications** in the Netlify UI to have them emailed on. Note
+that this also means the "email yourself the link" form captures the address but
+does not send a link; that needs a notification or an outbound integration.
+
+Forms use native `required` validation, so an empty submit is blocked rather
+than falling through to the success state. A failed POST shows an error rather
+than a false confirmation, and submit buttons disable while in flight.
+
+Two things deliberately *not* added, both one-liners if you want them:
+
+- **Honeypot spam field** (`data-netlify-honeypot="bot-field"` plus a hidden
+  `bot-field` input). Invisible to users; worth adding before the link spreads.
+- **Renaming the newsletter field** from `newsletter` to `email`. Netlify treats
+  a field literally named `email` as the reply-to address on notifications, so
+  the newsletter form currently won't get that. Left as-is to avoid changing
+  markup that wasn't part of the request.
 
 ## Images
 
