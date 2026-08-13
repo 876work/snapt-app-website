@@ -21,8 +21,8 @@ export default function ComingSoonPage() {
         <h1 className={styles.title}>Something worth photographing is coming.</h1>
 
         <p className={styles.blurb}>
-          Snapt connects you with vetted local photographers and videographers — booked, edited,
-          and delivered in one app. We&rsquo;re putting the finishing touches on it now.
+          Snapt App connects you with vetted local photographers and videographers — booked,
+          edited, and delivered in one app. We&rsquo;re putting the finishing touches on it now.
         </p>
 
         <div className={styles.rule} />
