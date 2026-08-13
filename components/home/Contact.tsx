@@ -2,20 +2,38 @@
 
 import { useState } from 'react';
 import { CONTACT_EMAIL, INSTAGRAM_URL } from '@/lib/links';
+import { NETLIFY_FORM_NAMES, submitNetlifyForm } from '@/lib/netlifyForms';
 import sections from './sections.module.css';
 import styles from './Contact.module.css';
 
 /**
  * Contact route for people who won't download the app.
  *
- * TODO(launch): submitting only swaps to the confirmation state — nothing is
- * sent. Post to your inbox / form provider before going live.
+ * Submissions go to Netlify Forms under the name "contact" — read them in
+ * Netlify under Forms, and add a notification there to have them emailed on.
  *
  * Every field is `required`, so an empty submit is blocked by native
  * validation rather than falling through to the success state.
  */
 export default function Contact() {
   const [sent, setSent] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    setPending(true);
+    setError(null);
+    try {
+      await submitNetlifyForm(NETLIFY_FORM_NAMES.contact, form);
+      setSent(true);
+    } catch {
+      setError("That didn't send. Check your connection and try again.");
+    } finally {
+      setPending(false);
+    }
+  };
 
   return (
     <section id="contact" className={sections.sectionNarrow}>
@@ -54,11 +72,12 @@ export default function Contact() {
           ) : (
             <form
               className={styles.form}
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSent(true);
-              }}
+              name={NETLIFY_FORM_NAMES.contact}
+              method="POST"
+              data-netlify="true"
+              onSubmit={onSubmit}
             >
+              <input type="hidden" name="form-name" value={NETLIFY_FORM_NAMES.contact} />
               <p className={styles.formTitle}>
                 <span className={styles.dot} aria-hidden="true" />
                 <span className={styles.dotPulse} aria-hidden="true" />
@@ -110,12 +129,14 @@ export default function Contact() {
                 <span>Your message</span>
               </label>
 
-              <button type="submit" className={styles.submit}>
-                Send message
+              <button type="submit" className={styles.submit} disabled={pending}>
+                {pending ? 'Sending…' : 'Send message'}
               </button>
-              <p className={styles.disclaimer}>
-                Placeholder — wire this to your inbox before launch.
-              </p>
+              {error ? (
+                <p className={styles.error} role="alert">
+                  {error}
+                </p>
+              ) : null}
             </form>
           )}
         </div>

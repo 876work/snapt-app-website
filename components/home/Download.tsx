@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import StoreBadges from '@/components/site/StoreBadges';
+import { NETLIFY_FORM_NAMES, submitNetlifyForm } from '@/lib/netlifyForms';
 import sections from './sections.module.css';
 import styles from './Download.module.css';
 
@@ -9,12 +10,32 @@ import styles from './Download.module.css';
  * Final download block. Store badges do nothing on a laptop, so desktop gets a
  * QR code and an email-me-the-link fallback rather than a dead end.
  *
- * TODO(launch): the email form only swaps to a confirmation state — wire it to
- * your email provider, and replace the QR placeholder with a real code
- * encoding STORE_ONELINK.
+ * Addresses are captured in Netlify Forms under the name "app-link" — Netlify
+ * stores them, it does not send the link, so add a notification or an outbound
+ * integration there to actually deliver it.
+ *
+ * TODO(launch): replace the QR placeholder with a real code encoding
+ * STORE_ONELINK.
  */
 export default function Download() {
   const [sent, setSent] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    setPending(true);
+    setError(null);
+    try {
+      await submitNetlifyForm(NETLIFY_FORM_NAMES.appLink, form);
+      setSent(true);
+    } catch {
+      setError("That didn't send. Please try again.");
+    } finally {
+      setPending(false);
+    }
+  };
 
   return (
     <section id="download" className={sections.sectionEnd}>
@@ -49,11 +70,12 @@ export default function Download() {
             <>
               <form
                 className={styles.emailForm}
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSent(true);
-                }}
+                name={NETLIFY_FORM_NAMES.appLink}
+                method="POST"
+                data-netlify="true"
+                onSubmit={onSubmit}
               >
+                <input type="hidden" name="form-name" value={NETLIFY_FORM_NAMES.appLink} />
                 <input
                   type="email"
                   required
@@ -62,13 +84,15 @@ export default function Download() {
                   aria-label="Email address"
                   className={styles.emailInput}
                 />
-                <button type="submit" className={styles.emailSubmit}>
-                  Send link
+                <button type="submit" className={styles.emailSubmit} disabled={pending}>
+                  {pending ? 'Sending…' : 'Send link'}
                 </button>
               </form>
-              <p className={styles.disclaimer}>
-                Placeholder — wire this to your email provider before launch.
-              </p>
+              {error ? (
+                <p className={styles.error} role="alert">
+                  {error}
+                </p>
+              ) : null}
             </>
           )}
         </div>

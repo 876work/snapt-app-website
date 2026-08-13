@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Netlify form definitions</title>
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <!--
+      Netlify Forms detection file.
+
+      Netlify's build bot discovers forms by parsing the static HTML in the
+      deploy. Next.js renders pages through its own runtime, so the app's React
+      forms are not visible to that parser — this file is what registers them.
+
+      Each <form> below must mirror a real form in the app: same `name`, and the
+      same set of input `name` attributes. If you add, rename, or remove a field
+      in the app, change it here too or that field will be dropped from the
+      submission stored by Netlify.
+
+      The app posts to this path as urlencoded data with a `form-name` field
+      identifying which form it is. See lib/netlifyForms.ts.
+    -->
+
+    <!-- components/home/Contact.tsx -->
+    <form name="contact" data-netlify="true" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="text" name="firstName" />
+      <input type="text" name="lastName" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
+    </form>
+
+    <!-- components/site/NewsletterForm.tsx -->
+    <form name="newsletter" data-netlify="true" hidden>
+      <input type="hidden" name="form-name" value="newsletter" />
+      <input type="email" name="newsletter" />
+    </form>
+
+    <!-- components/home/Download.tsx -->
+    <form name="app-link" data-netlify="true" hidden>
+      <input type="hidden" name="form-name" value="app-link" />
+      <input type="email" name="email" />
+    </form>
+  </body>
+</html>

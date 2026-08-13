@@ -194,10 +194,15 @@ textarea.input:placeholder-shown + span {
   opacity: 0.85;
 }
 
-.disclaimer {
+.submit:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.error {
   margin: 6px 0 0;
-  font-size: 11.5px;
-  color: rgba(255, 255, 255, 0.45);
+  font-size: 12.5px;
+  color: var(--error);
   text-align: center;
 }
 
