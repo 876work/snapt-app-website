@@ -1,47 +1,26 @@
 'use client';
 
 import AccordionGallery, { type GalleryItem } from '@/components/fx/AccordionGallery';
+import homeContent from '@/content/home.json';
 import sections from './sections.module.css';
 import styles from './Portfolio.module.css';
 
-/**
- * TODO(launch): swap for real creator work — 900 × 1200 (3:4) each.
- * These are stand-ins so the accordion motion reads correctly.
- */
+const CONTENT_ID = 'content/home.json';
+
 const PORTFOLIO_ITEMS: GalleryItem[] = [
-  {
-    image: '/assets/img/wedding.jpg',
-    label: 'Weddings',
-    alt: 'Bride and groom walking under palm trees',
-  },
-  {
-    image: '/assets/img/nightsout.jpg',
-    label: 'Nights out',
-    alt: 'Friends laughing together on a night out',
-  },
-  {
-    image: '/assets/img/social.jpg',
-    label: 'Social content',
-    alt: 'Woman being filmed outdoors by a videographer',
-  },
-  {
-    image: '/assets/img/birthday.jpg',
-    label: 'Birthdays',
-    alt: 'Woman posing with giant number balloons',
-  },
-  {
-    image: '/assets/img/book-creator.jpg',
-    label: 'Studio sessions',
-    alt: 'Photographer directing a styled studio shoot',
-  },
+  { image: homeContent.portfolio1Image, label: homeContent.portfolio1Label, alt: homeContent.portfolio1Alt },
+  { image: homeContent.portfolio2Image, label: homeContent.portfolio2Label, alt: homeContent.portfolio2Alt },
+  { image: homeContent.portfolio3Image, label: homeContent.portfolio3Label, alt: homeContent.portfolio3Alt },
+  { image: homeContent.portfolio4Image, label: homeContent.portfolio4Label, alt: homeContent.portfolio4Alt },
+  { image: homeContent.portfolio5Image, label: homeContent.portfolio5Label, alt: homeContent.portfolio5Alt },
 ];
 
 export default function Portfolio() {
   return (
-    <section className={sections.section}>
+    <section className={sections.section} data-sb-object-id={CONTENT_ID}>
       <div className={styles.head}>
-        <h2 className={sections.h2}>Your Style, Your Chose</h2>
-        <div className={styles.subtitle}>Recent work by Snapt creators</div>
+        <h2 className={sections.h2} data-sb-field-path="portfolioHeading">{homeContent.portfolioHeading}</h2>
+        <div className={styles.subtitle} data-sb-field-path="portfolioSubtitle">{homeContent.portfolioSubtitle}</div>
       </div>
 
       <div className={styles.gallery}>
@@ -63,9 +42,7 @@ export default function Portfolio() {
         />
       </div>
 
-      <p className={styles.note}>
-        Hover or tap a panel to open it. Swap these for your own work — 900 × 1200 (3:4) each.
-      </p>
+      <p className={styles.note} data-sb-field-path="portfolioNote">{homeContent.portfolioNote}</p>
     </section>
   );
 }
