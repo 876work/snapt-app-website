@@ -2,20 +2,14 @@
 
 import { useState } from 'react';
 import HoneypotField from '@/components/site/HoneypotField';
+import homeContent from '@/content/home.json';
 import { CONTACT_EMAIL, INSTAGRAM_URL } from '@/lib/links';
 import { NETLIFY_FORM_NAMES, submitNetlifyForm } from '@/lib/netlifyForms';
 import sections from './sections.module.css';
 import styles from './Contact.module.css';
 
-/**
- * Contact route for people who won't download the app.
- *
- * Submissions go to Netlify Forms under the name "contact" — read them in
- * Netlify under Forms, and add a notification there to have them emailed on.
- *
- * Every field is `required`, so an empty submit is blocked by native
- * validation rather than falling through to the success state.
- */
+const CONTENT_ID = 'content/home.json';
+
 export default function Contact() {
   const [sent, setSent] = useState(false);
   const [pending, setPending] = useState(false);
@@ -37,38 +31,27 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className={sections.sectionNarrow}>
+    <section id="contact" className={sections.sectionNarrow} data-sb-object-id={CONTENT_ID}>
       <div className={styles.layout}>
         <div className={styles.intro}>
-          <h2 className={styles.title}>Still have a question?</h2>
-          <p className={styles.blurb}>
-            Send us a message, and we&rsquo;ll reply by email. For bookings, the app is faster, but
-            for anything else, we&rsquo;re here.
-          </p>
+          <h2 className={styles.title} data-sb-field-path="contactHeading">{homeContent.contactHeading}</h2>
+          <p className={styles.blurb} data-sb-field-path="contactBlurb">{homeContent.contactBlurb}</p>
           <div className={styles.rule} />
           <div className={styles.routes}>
-            <a href={`mailto:${CONTACT_EMAIL}`} className={styles.route}>
-              {CONTACT_EMAIL}
-            </a>
-            <a href={INSTAGRAM_URL} className={styles.route}>
-              Instagram
-            </a>
+            <a href={`mailto:${CONTACT_EMAIL}`} className={styles.route}>{CONTACT_EMAIL}</a>
+            <a href={INSTAGRAM_URL} className={styles.route}>Instagram</a>
           </div>
-          <p className={styles.serving}>Currently serving northern Saint Lucia.</p>
+          <p className={styles.serving} data-sb-field-path="contactServing">{homeContent.contactServing}</p>
         </div>
 
         <div className={styles.formCol}>
           {sent ? (
             <div className={styles.sentCard}>
               <div className={styles.sentBanner} role="status">
-                <span className={styles.sentMark} aria-hidden="true">
-                  ✓
-                </span>
+                <span className={styles.sentMark} aria-hidden="true">✓</span>
                 <span className={styles.sentText}>Message sent — we&rsquo;ll reply by email.</span>
               </div>
-              <button type="button" onClick={() => setSent(false)} className={styles.resetButton}>
-                Send another
-              </button>
+              <button type="button" onClick={() => setSent(false)} className={styles.resetButton}>Send another</button>
             </div>
           ) : (
             <form
@@ -84,46 +67,23 @@ export default function Contact() {
               <p className={styles.formTitle}>
                 <span className={styles.dot} aria-hidden="true" />
                 <span className={styles.dotPulse} aria-hidden="true" />
-                Get in touch
+                <span data-sb-field-path="contactFormTitle">{homeContent.contactFormTitle}</span>
               </p>
-              <p className={styles.formNote}>
-                All fields are required. We usually reply within a day.
-              </p>
+              <p className={styles.formNote} data-sb-field-path="contactFormNote">{homeContent.contactFormNote}</p>
 
               <div className={styles.nameRow}>
                 <label className={styles.field}>
-                  <input
-                    className={styles.input}
-                    type="text"
-                    name="firstName"
-                    placeholder=" "
-                    required
-                    autoComplete="given-name"
-                  />
+                  <input className={styles.input} type="text" name="firstName" placeholder=" " required autoComplete="given-name" />
                   <span>First name</span>
                 </label>
                 <label className={styles.field}>
-                  <input
-                    className={styles.input}
-                    type="text"
-                    name="lastName"
-                    placeholder=" "
-                    required
-                    autoComplete="family-name"
-                  />
+                  <input className={styles.input} type="text" name="lastName" placeholder=" " required autoComplete="family-name" />
                   <span>Last name</span>
                 </label>
               </div>
 
               <label className={styles.field}>
-                <input
-                  className={styles.input}
-                  type="email"
-                  name="email"
-                  placeholder=" "
-                  required
-                  autoComplete="email"
-                />
+                <input className={styles.input} type="email" name="email" placeholder=" " required autoComplete="email" />
                 <span>Email address</span>
               </label>
 
@@ -132,14 +92,8 @@ export default function Contact() {
                 <span>Your message</span>
               </label>
 
-              <button type="submit" className={styles.submit} disabled={pending}>
-                {pending ? 'Sending…' : 'Send message'}
-              </button>
-              {error ? (
-                <p className={styles.error} role="alert">
-                  {error}
-                </p>
-              ) : null}
+              <button type="submit" className={styles.submit} disabled={pending}>{pending ? 'Sending…' : 'Send message'}</button>
+              {error ? <p className={styles.error} role="alert">{error}</p> : null}
             </form>
           )}
         </div>
