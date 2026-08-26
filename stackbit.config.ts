@@ -3,9 +3,11 @@ import { join } from "node:path";
 import { defineStackbitConfig } from "@stackbit/types";
 import { GitContentSource } from "@stackbit/cms-git";
 
-const homeContent = JSON.parse(
-  readFileSync(join(__dirname, "content/home.json"), "utf8"),
-) as Record<string, string>;
+const readContent = (fileName: string) =>
+  JSON.parse(readFileSync(join(__dirname, `content/${fileName}`), "utf8")) as Record<string, string>;
+
+const homeContent = readContent("home.json");
+const exploreContent = readContent("explore.json");
 
 const imageFields = new Set([
   "heroMaskImage",
@@ -19,6 +21,23 @@ const imageFields = new Set([
   "occasion7Image",
   "path1Image",
   "path2Image",
+  "portfolio1Image",
+  "portfolio2Image",
+  "portfolio3Image",
+  "portfolio4Image",
+  "portfolio5Image",
+  "creatorsImage",
+  "fan1Image",
+  "fan2Image",
+  "fan3Image",
+  "fan4Image",
+  "fan5Image",
+  "row1Image",
+  "row2Image",
+  "row3Image",
+  "row4Image",
+  "row5Image",
+  "row6Image",
 ]);
 
 const labelFor = (name: string) =>
@@ -28,13 +47,14 @@ const labelFor = (name: string) =>
     .replace(/\bcta\b/gi, "CTA")
     .replace(/^./, (char) => char.toUpperCase());
 
-const fields = Object.keys(homeContent)
-  .filter((name) => name !== "type")
-  .map((name) => ({
-    name,
-    label: labelFor(name),
-    type: imageFields.has(name) ? ("image" as const) : ("string" as const),
-  })) as any[];
+const fieldsFor = (content: Record<string, string>) =>
+  Object.keys(content)
+    .filter((name) => name !== "type")
+    .map((name) => ({
+      name,
+      label: labelFor(name),
+      type: imageFields.has(name) ? ("image" as const) : ("string" as const),
+    })) as any[];
 
 export default defineStackbitConfig({
   stackbitVersion: "~0.6.0",
@@ -51,7 +71,15 @@ export default defineStackbitConfig({
           type: "page",
           urlPath: "/home",
           filePath: "content/home.json",
-          fields,
+          fields: fieldsFor(homeContent),
+        },
+        {
+          name: "ExplorePage",
+          label: "Explore the app",
+          type: "page",
+          urlPath: "/explore",
+          filePath: "content/explore.json",
+          fields: fieldsFor(exploreContent),
         },
       ],
       assetsConfig: {
