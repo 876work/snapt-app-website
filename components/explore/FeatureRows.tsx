@@ -1,24 +1,35 @@
 import Link from 'next/link';
 import StatusTag from '@/components/ds/StatusTag';
 import VerifiedBadge from '@/components/ds/VerifiedBadge';
+import exploreContent from '@/content/explore.json';
 import { HOME_PATH } from '@/lib/nav';
 import Reveal from './Reveal';
 import styles from './Explore.module.css';
+
+const CONTENT_ID = 'content/explore.json';
+
+type BadgeKind = 'verified' | 'text' | 'ready' | 'live';
 
 interface Row {
   key: string;
   overline: string;
   title: string;
   body: string;
-  link?: { href: string; label: string };
-  /** Which side the phone sits on at wide widths. */
+  overlineField: string;
+  titleField: string;
+  bodyField: string;
+  link?: { href: string; label: string; labelField: string };
   mediaSide: 'left' | 'right';
-  screen: { src: string; alt: string };
+  screen: { src: string; alt: string; imageField: string };
   bobPhone?: boolean;
   card: {
-    badge: React.ReactNode;
+    badgeKind: BadgeKind;
+    badgeText?: string;
+    badgeField?: string;
     title: string;
     meta: string;
+    titleField: string;
+    metaField: string;
     tilt: string;
     bobDuration: string;
   };
@@ -27,142 +38,176 @@ interface Row {
 const ROWS: Row[] = [
   {
     key: 'browse',
-    overline: 'BROWSE',
-    title: 'Real portfolios, real people',
-    body: "Every creator on Snapt shows real work and a verified identity. Browse portfolios by occasion, see who's available in your area, and pick the eye that fits your day.",
+    overline: exploreContent.row1Overline,
+    title: exploreContent.row1Title,
+    body: exploreContent.row1Body,
+    overlineField: 'row1Overline',
+    titleField: 'row1Title',
+    bodyField: 'row1Body',
     mediaSide: 'left',
-    screen: { src: '/assets/screens/row-browse.webp', alt: 'Creator profile with portfolio' },
+    screen: { src: exploreContent.row1Image, alt: exploreContent.row1Alt, imageField: 'row1Image' },
     bobPhone: true,
     card: {
-      badge: <VerifiedBadge />,
-      title: 'ID checked before their first job',
-      meta: 'Every creator you can browse',
+      badgeKind: 'verified',
+      title: exploreContent.row1CardTitle,
+      meta: exploreContent.row1CardMeta,
+      titleField: 'row1CardTitle',
+      metaField: 'row1CardMeta',
       tilt: 'rotate(-5deg)',
       bobDuration: '5s',
     },
   },
   {
     key: 'book',
-    overline: 'BOOK',
-    title: 'Booked in a few taps',
-    body: "Pick your occasion, drop your pin, choose a date and time. Standard pricing shows before you confirm — the price you see is the price you pay. We'll confirm as soon as a creator accepts.",
+    overline: exploreContent.row2Overline,
+    title: exploreContent.row2Title,
+    body: exploreContent.row2Body,
+    overlineField: 'row2Overline',
+    titleField: 'row2Title',
+    bodyField: 'row2Body',
     mediaSide: 'right',
-    screen: { src: '/assets/screens/row-book.webp', alt: 'Occasion and date booking screen' },
+    screen: { src: exploreContent.row2Image, alt: exploreContent.row2Alt, imageField: 'row2Image' },
     card: {
-      badge: <div className={styles.popOverline}>STANDARD PRICING</div>,
-      title: '$60 · 1 hour session',
-      meta: 'Shown before you confirm',
+      badgeKind: 'text',
+      badgeText: exploreContent.row2Badge,
+      badgeField: 'row2Badge',
+      title: exploreContent.row2CardTitle,
+      meta: exploreContent.row2CardMeta,
+      titleField: 'row2CardTitle',
+      metaField: 'row2CardMeta',
       tilt: 'rotate(4deg)',
       bobDuration: '5.4s',
     },
   },
   {
     key: 'session',
-    overline: 'ON THE DAY',
-    title: 'Meet with confidence',
-    body: "When your creator arrives, you exchange a one-time safety code shown in both apps — so you always know you've met the verified person you booked. Then you get on with your day; they've got the camera.",
+    overline: exploreContent.row3Overline,
+    title: exploreContent.row3Title,
+    body: exploreContent.row3Body,
+    overlineField: 'row3Overline',
+    titleField: 'row3Title',
+    bodyField: 'row3Body',
     mediaSide: 'left',
-    screen: { src: '/assets/screens/row-session.webp', alt: 'Session screen with safety code' },
+    screen: { src: exploreContent.row3Image, alt: exploreContent.row3Alt, imageField: 'row3Image' },
     card: {
-      badge: <div className={styles.popOverline}>SAFETY CODE</div>,
-      title: 'One-time code at arrival',
-      meta: 'Shown in both apps, matched in person',
+      badgeKind: 'text',
+      badgeText: exploreContent.row3Badge,
+      badgeField: 'row3Badge',
+      title: exploreContent.row3CardTitle,
+      meta: exploreContent.row3CardMeta,
+      titleField: 'row3CardTitle',
+      metaField: 'row3CardMeta',
       tilt: 'rotate(-4deg)',
       bobDuration: '5.2s',
     },
   },
   {
     key: 'upload',
-    overline: 'REMOTE EDITS',
-    title: 'Already have the footage? Send it in.',
-    body: 'Upload photos or video straight from your camera roll and a real editor takes it from there — colour, cuts, and polish, from $25. No session needed, and no location limit across Saint Lucia.',
+    overline: exploreContent.row4Overline,
+    title: exploreContent.row4Title,
+    body: exploreContent.row4Body,
+    overlineField: 'row4Overline',
+    titleField: 'row4Title',
+    bodyField: 'row4Body',
     mediaSide: 'right',
-    screen: { src: '/assets/screens/row-upload.webp', alt: 'Footage upload screen' },
+    screen: { src: exploreContent.row4Image, alt: exploreContent.row4Alt, imageField: 'row4Image' },
     card: {
-      badge: <StatusTag tone="ready" label="UPLOADING" />,
-      title: 'Straight from your camera roll',
-      meta: 'Remote edit · from $25',
+      badgeKind: 'ready',
+      title: exploreContent.row4CardTitle,
+      meta: exploreContent.row4CardMeta,
+      titleField: 'row4CardTitle',
+      metaField: 'row4CardMeta',
       tilt: 'rotate(5deg)',
       bobDuration: '5.6s',
     },
   },
   {
     key: 'delivery',
-    overline: 'DELIVERY',
-    title: 'Delivered where you booked it',
-    body: 'Your finished photos and video land right in the app — within 24 hours as standard, 6 hours on rush. Download in full quality, share anywhere, keep them forever.',
+    overline: exploreContent.row5Overline,
+    title: exploreContent.row5Title,
+    body: exploreContent.row5Body,
+    overlineField: 'row5Overline',
+    titleField: 'row5Title',
+    bodyField: 'row5Body',
     mediaSide: 'left',
-    screen: { src: '/assets/screens/row-delivery.webp', alt: 'Delivered photos screen' },
+    screen: { src: exploreContent.row5Image, alt: exploreContent.row5Alt, imageField: 'row5Image' },
     card: {
-      badge: <StatusTag tone="live" label="ON TIME" />,
-      title: 'Every job has a delivery deadline',
-      meta: '24 hours standard · 6 hours on rush',
+      badgeKind: 'live',
+      title: exploreContent.row5CardTitle,
+      meta: exploreContent.row5CardMeta,
+      titleField: 'row5CardTitle',
+      metaField: 'row5CardMeta',
       tilt: 'rotate(-5deg)',
       bobDuration: '5.1s',
     },
   },
   {
     key: 'creator',
-    overline: 'CREATOR MODE',
-    title: 'One app, both sides of the lens',
-    body: 'Creators switch into their own dashboard — see booked jobs, track earnings, and cash out. Keep 68% of every booking, with payouts available 7 days after delivery.',
-    link: { href: `${HOME_PATH}#creators`, label: 'Become a creator →' },
+    overline: exploreContent.row6Overline,
+    title: exploreContent.row6Title,
+    body: exploreContent.row6Body,
+    overlineField: 'row6Overline',
+    titleField: 'row6Title',
+    bodyField: 'row6Body',
+    link: { href: `${HOME_PATH}#creators`, label: exploreContent.row6LinkLabel, labelField: 'row6LinkLabel' },
     mediaSide: 'right',
-    screen: { src: '/assets/screens/row-creator.webp', alt: 'Creator earnings dashboard' },
+    screen: { src: exploreContent.row6Image, alt: exploreContent.row6Alt, imageField: 'row6Image' },
     card: {
-      badge: <div className={styles.popOverline}>CREATOR MODE</div>,
-      title: 'Switch between client and creator',
-      meta: 'Same login, same app',
+      badgeKind: 'text',
+      badgeText: exploreContent.row6Badge,
+      badgeField: 'row6Badge',
+      title: exploreContent.row6CardTitle,
+      meta: exploreContent.row6CardMeta,
+      titleField: 'row6CardTitle',
+      metaField: 'row6CardMeta',
       tilt: 'rotate(4deg)',
       bobDuration: '5.5s',
     },
   },
 ];
 
+function CardBadge({ row }: { row: Row }) {
+  if (row.card.badgeKind === 'verified') return <VerifiedBadge />;
+  if (row.card.badgeKind === 'ready') return <StatusTag tone="ready" label="UPLOADING" />;
+  if (row.card.badgeKind === 'live') return <StatusTag tone="live" label="ON TIME" />;
+  return <div className={styles.popOverline} data-sb-field-path={row.card.badgeField}>{row.card.badgeText}</div>;
+}
+
 export default function FeatureRows() {
   return (
-    <section className={styles.rows} aria-label="How the app works">
+    <section className={styles.rows} aria-label="How the app works" data-sb-object-id={CONTENT_ID}>
       {ROWS.map((row) => {
         const mediaLeft = row.mediaSide === 'left';
         return (
           <Reveal key={row.key} className={styles.row}>
-            <div
-              className={styles.rowMedia}
-              style={{ order: mediaLeft ? 1 : 2 }}
-            >
+            <div className={styles.rowMedia} style={{ order: mediaLeft ? 1 : 2 }}>
               <div className={styles.rowPhoneWrap}>
                 <div className={row.bobPhone ? styles.rowPhoneBob : styles.rowPhone}>
                   <div className={styles.rowPhoneScreen}>
                     {/* eslint-disable-next-line @next/next/no-img-element -- fills a fixed 440:956 frame */}
-                    <img src={row.screen.src} alt={row.screen.alt} />
+                    <img src={row.screen.src} alt={row.screen.alt} data-sb-field-path={row.screen.imageField} />
                   </div>
                 </div>
                 <div
                   className={mediaLeft ? styles.popLeft : styles.popRight}
-                  style={
-                    {
-                      '--tilt': row.card.tilt,
-                      transform: row.card.tilt,
-                      animation: `bob ${row.card.bobDuration} ease-in-out infinite`,
-                    } as React.CSSProperties
-                  }
+                  style={{
+                    '--tilt': row.card.tilt,
+                    transform: row.card.tilt,
+                    animation: `bob ${row.card.bobDuration} ease-in-out infinite`,
+                  } as React.CSSProperties}
                 >
-                  {row.card.badge}
-                  <div className={styles.popTitle}>{row.card.title}</div>
-                  <div className={styles.popMeta}>{row.card.meta}</div>
+                  <CardBadge row={row} />
+                  <div className={styles.popTitle} data-sb-field-path={row.card.titleField}>{row.card.title}</div>
+                  <div className={styles.popMeta} data-sb-field-path={row.card.metaField}>{row.card.meta}</div>
                 </div>
               </div>
             </div>
 
             <div className={styles.rowCopy} style={{ order: mediaLeft ? 2 : 1 }}>
-              <p className={styles.rowOverline}>{row.overline}</p>
-              <h2 className={styles.rowTitle}>{row.title}</h2>
-              <p className={styles.rowBody}>{row.body}</p>
-              {row.link ? (
-                <Link href={row.link.href} className={styles.rowLink}>
-                  {row.link.label}
-                </Link>
-              ) : null}
+              <p className={styles.rowOverline} data-sb-field-path={row.overlineField}>{row.overline}</p>
+              <h2 className={styles.rowTitle} data-sb-field-path={row.titleField}>{row.title}</h2>
+              <p className={styles.rowBody} data-sb-field-path={row.bodyField}>{row.body}</p>
+              {row.link ? <Link href={row.link.href} className={styles.rowLink} data-sb-field-path={row.link.labelField}>{row.link.label}</Link> : null}
             </div>
           </Reveal>
         );
