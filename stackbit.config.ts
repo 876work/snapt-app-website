@@ -34,7 +34,7 @@ const fields = Object.keys(homeContent)
     name,
     label: labelFor(name),
     type: imageFields.has(name) ? ("image" as const) : ("string" as const),
-  }));
+  })) as any[];
 
 export default defineStackbitConfig({
   stackbitVersion: "~0.6.0",
