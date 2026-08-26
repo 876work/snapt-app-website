@@ -1,85 +1,45 @@
+import homeContent from '@/content/home.json';
 import sections from './sections.module.css';
 import styles from './Occasions.module.css';
 
-/**
- * Deliberately early on the page: people arrive knowing their occasion, not
- * the product.
- */
+const CONTENT_ID = 'content/home.json';
+
 const OCCASIONS = [
-  {
-    title: 'Weddings',
-    blurb: 'The whole day, or just the golden hour.',
-    image: '/assets/img/wedding.jpg',
-    alt: 'Bride and groom walking under palm trees in Saint Lucia',
-  },
-  {
-    title: 'Corporate events',
-    blurb: 'Launches, conferences, team days.',
-    image: '/assets/img/corporate.webp',
-    alt: 'Guest smiling at an evening corporate reception',
-  },
-  {
-    title: 'Birthdays',
-    blurb: 'Big ones, small ones, surprise ones.',
-    image: '/assets/img/birthday.jpg',
-    alt: 'Woman peeking through a giant 30 birthday balloon',
-  },
-  {
-    title: 'Nights out',
-    blurb: "Girls' night, guys' night — proof it happened.",
-    image: '/assets/img/nightsout.jpg',
-    alt: 'Four friends laughing together on a night out',
-  },
-  {
-    title: 'Social content',
-    blurb: 'Reels, brand shoots, your next post.',
-    image: '/assets/img/social.jpg',
-    alt: 'Woman being filmed by a videographer outdoors',
-  },
-  {
-    title: 'Family portraits',
-    blurb: 'Everyone together, for once.',
-    image: '/assets/img/family.webp',
-    alt: 'Family in party hats blowing out candles on a birthday cake',
-  },
-  {
-    title: 'Graduations',
-    blurb: 'You did the work. Keep the moment.',
-    image: '/assets/img/graduation.webp',
-    alt: 'Graduate in a cap and suit adjusting his jacket button',
-  },
+  { title: homeContent.occasion1Title, blurb: homeContent.occasion1Blurb, image: homeContent.occasion1Image, alt: homeContent.occasion1Alt, titleField: 'occasion1Title', blurbField: 'occasion1Blurb', imageField: 'occasion1Image' },
+  { title: homeContent.occasion2Title, blurb: homeContent.occasion2Blurb, image: homeContent.occasion2Image, alt: homeContent.occasion2Alt, titleField: 'occasion2Title', blurbField: 'occasion2Blurb', imageField: 'occasion2Image' },
+  { title: homeContent.occasion3Title, blurb: homeContent.occasion3Blurb, image: homeContent.occasion3Image, alt: homeContent.occasion3Alt, titleField: 'occasion3Title', blurbField: 'occasion3Blurb', imageField: 'occasion3Image' },
+  { title: homeContent.occasion4Title, blurb: homeContent.occasion4Blurb, image: homeContent.occasion4Image, alt: homeContent.occasion4Alt, titleField: 'occasion4Title', blurbField: 'occasion4Blurb', imageField: 'occasion4Image' },
+  { title: homeContent.occasion5Title, blurb: homeContent.occasion5Blurb, image: homeContent.occasion5Image, alt: homeContent.occasion5Alt, titleField: 'occasion5Title', blurbField: 'occasion5Blurb', imageField: 'occasion5Image' },
+  { title: homeContent.occasion6Title, blurb: homeContent.occasion6Blurb, image: homeContent.occasion6Image, alt: homeContent.occasion6Alt, titleField: 'occasion6Title', blurbField: 'occasion6Blurb', imageField: 'occasion6Image' },
+  { title: homeContent.occasion7Title, blurb: homeContent.occasion7Blurb, image: homeContent.occasion7Image, alt: homeContent.occasion7Alt, titleField: 'occasion7Title', blurbField: 'occasion7Blurb', imageField: 'occasion7Image' },
 ];
 
 export default function Occasions() {
   return (
-    <section id="occasions" className={sections.section}>
-      <p className={sections.overline}>WHATEVER THE OCCASION</p>
+    <section id="occasions" className={sections.section} data-sb-object-id={CONTENT_ID}>
+      <p className={sections.overline} data-sb-field-path="occasionsOverline">{homeContent.occasionsOverline}</p>
       <h2 className={sections.h2Spaced}>
-        Start with your moment.
+        <span data-sb-field-path="occasionsHeadingLine1">{homeContent.occasionsHeadingLine1}</span>
         <br />
-        We&rsquo;ll bring the camera.
+        <span data-sb-field-path="occasionsHeadingLine2">{homeContent.occasionsHeadingLine2}</span>
       </h2>
 
       <div className={styles.grid}>
         {OCCASIONS.map((occasion) => (
-          <a key={occasion.title} href="#download" className={styles.tile}>
+          <a key={occasion.titleField} href="#download" className={styles.tile}>
             <div className={styles.frame}>
               {/* eslint-disable-next-line @next/next/no-img-element -- fills a fixed 4:5 frame */}
-              <img src={occasion.image} alt={occasion.alt} />
+              <img src={occasion.image} alt={occasion.alt} data-sb-field-path={occasion.imageField} />
             </div>
-            <div className={styles.title}>{occasion.title}</div>
-            <div className={styles.blurb}>{occasion.blurb}</div>
+            <div className={styles.title} data-sb-field-path={occasion.titleField}>{occasion.title}</div>
+            <div className={styles.blurb} data-sb-field-path={occasion.blurbField}>{occasion.blurb}</div>
           </a>
         ))}
 
         <div className={styles.promptTile}>
-          <div className={styles.promptTitle}>Something else?</div>
-          <p className={styles.promptBody}>
-            If it matters to you, it&rsquo;s worth shooting. Tell us what you need in the app.
-          </p>
-          <a href="#download" className={styles.promptCta}>
-            Get the app
-          </a>
+          <div className={styles.promptTitle} data-sb-field-path="occasionsPromptTitle">{homeContent.occasionsPromptTitle}</div>
+          <p className={styles.promptBody} data-sb-field-path="occasionsPromptBody">{homeContent.occasionsPromptBody}</p>
+          <a href="#download" className={styles.promptCta} data-sb-field-path="occasionsPromptCta">{homeContent.occasionsPromptCta}</a>
         </div>
       </div>
     </section>
