@@ -4,13 +4,15 @@ import Header from '@/components/site/Header';
 import Footer from '@/components/site/Footer';
 import PhoneFan from '@/components/explore/PhoneFan';
 import FeatureRows from '@/components/explore/FeatureRows';
+import exploreContent from '@/content/explore.json';
 import { HOME_PATH } from '@/lib/nav';
 import styles from '@/components/explore/Explore.module.css';
 
+const CONTENT_ID = 'content/explore.json';
+
 export const metadata: Metadata = {
-  title: 'Explore the app — Snapt',
-  description:
-    'A look inside the Snapt app: browse vetted creators, book in a few taps, meet safely, and get your edited photos delivered in the app.',
+  title: exploreContent.metaTitle,
+  description: exploreContent.metaDescription,
 };
 
 export default function ExplorePage() {
@@ -18,34 +20,23 @@ export default function ExplorePage() {
     <div className={styles.page}>
       <Header currentPath="/explore" homeHref={HOME_PATH} ctaHref={`${HOME_PATH}#download`} />
 
-      <section className={styles.hero}>
-        <p className={styles.overline}>EXPLORE THE APP</p>
-        <h1 className={styles.heroTitle}>Everything happens in one place.</h1>
-        <p className={styles.heroLede}>
-          From the first tap to the finished photos — here&rsquo;s what booking, meeting, and
-          getting your work back looks like inside Snapt.
-        </p>
+      <section className={styles.hero} data-sb-object-id={CONTENT_ID}>
+        <p className={styles.overline} data-sb-field-path="heroOverline">{exploreContent.heroOverline}</p>
+        <h1 className={styles.heroTitle} data-sb-field-path="heroTitle">{exploreContent.heroTitle}</h1>
+        <p className={styles.heroLede} data-sb-field-path="heroDescription">{exploreContent.heroDescription}</p>
       </section>
 
       <PhoneFan />
       <FeatureRows />
 
-      <section className={styles.ctaSection}>
+      <section className={styles.ctaSection} data-sb-object-id={CONTENT_ID}>
         <div className={styles.ctaPanel}>
-          <h2 className={styles.ctaTitle}>
-            Seen enough? Your first booking takes about two minutes.
-          </h2>
+          <h2 className={styles.ctaTitle} data-sb-field-path="ctaTitle">{exploreContent.ctaTitle}</h2>
           <div className={styles.ctaButtons}>
-            <Link href={`${HOME_PATH}#download`} className={styles.ctaPrimary}>
-              Get the app
-            </Link>
-            <Link href={`${HOME_PATH}#occasions`} className={styles.ctaSecondary}>
-              See occasions
-            </Link>
+            <Link href={`${HOME_PATH}#download`} className={styles.ctaPrimary} data-sb-field-path="ctaPrimary">{exploreContent.ctaPrimary}</Link>
+            <Link href={`${HOME_PATH}#occasions`} className={styles.ctaSecondary} data-sb-field-path="ctaSecondary">{exploreContent.ctaSecondary}</Link>
           </div>
-          <p className={styles.ctaFineprint}>
-            Free to download · Currently serving northern Saint Lucia
-          </p>
+          <p className={styles.ctaFineprint} data-sb-field-path="ctaFineprint">{exploreContent.ctaFineprint}</p>
         </div>
       </section>
 
